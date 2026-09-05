@@ -1,0 +1,1103 @@
+import type { Locale } from "./locales";
+
+type Dict = {
+  nav: Record<string, string>;
+  common: Record<string, string>;
+  hero: Record<string, string>;
+  pricing: Record<string, string>;
+  live: Record<string, string>;
+  menu: {
+    pageEyebrow: string;
+    pageTitle: string;
+    pageDesc: string;
+    tabSushi: string;
+    tabCombo: string;
+    tabDrinks: string;
+    note: string;
+    inBuffet: string;
+    stackEyebrow: string;
+    stackTitle: string;
+    stackHintTouch: string;
+    stackHintDesktop: string;
+    stackCta: string;
+    category: string;
+    cats: Record<string, { title: string; subtitle: string }>;
+    items: Record<string, { name: string; description: string; tag?: string }>;
+  };
+  vibe: Record<string, string>;
+  cta: Record<string, string>;
+  footer: Record<string, string>;
+  about: Record<string, string>;
+  reserve: Record<string, string>;
+  contact: Record<string, string>;
+  form: Record<string, string>;
+};
+
+const ro: Dict = {
+  nav: {
+    home: "Acasă",
+    menu: "Meniu",
+    about: "Atmosferă",
+    reserve: "Rezervări",
+    contact: "Contact",
+    reserveCta: "Rezervă",
+  },
+  common: {
+    lei: "lei",
+    language: "Limbă",
+    openMenu: "Deschide meniul",
+    closeMenu: "Închide meniul",
+  },
+  hero: {
+    location: "București, Mega Mall",
+    tagline:
+      "Bufet asiatic & sushi train — farfurii care circulă, arome care rămân. All you can eat: sushi. Combo-uri & băuturi separat.",
+    reserve: "Rezervă acum",
+    seeMenu: "Vezi meniul",
+    liveBand: "Ce e acum pe bandă",
+    scrollHint: "↓ Scroll pentru zoom pe bandă",
+  },
+  pricing: {
+    eyebrow: "Transparență totală",
+    title: "Prețuri & program",
+    description:
+      "Fără PDF-uri ascunse. Vezi exact cât costă accesul nelimitat și ce include.",
+    includes: "Ce include accesul",
+    schedule: "Program",
+    footnote:
+      "* Limită 100 minute. Băuturile nu sunt incluse. Prețul de weekend (94,90 lei) se aplică și în zilele de sărbătoare.",
+    weekdayLabel: "All you can eat",
+    weekdayDays: "Luni – Joi",
+    weekdayNote: "Acces nelimitat la bufet & sushi train",
+    weekendLabel: "All you can eat",
+    weekendDays: "Vineri – Duminică & sărbători",
+    weekendNote: "Același acces nelimitat · preț de weekend / sărbătoare",
+    weekendBadge: "Weekend",
+    kidsFreeLabel: "Copii",
+    kidsFreeDays: "Sub 3 ani",
+    kidsFreePrice: "Gratis",
+    kidsFreeNote: "Intrare liberă pentru cei mai mici",
+    kidsDiscLabel: "Copii",
+    kidsDiscDays: "Până în 120 cm",
+    kidsDiscPrice: "−35%",
+    kidsDiscNote: "Discount din prețul zilei (weekday sau weekend)",
+    everyDay: "Luni – Duminică",
+    hours: "11:30 – 22:00",
+    include1: "Acces nelimitat la sushi train (nigiri & maki)",
+    include2: "Limită 100 de minute la masă",
+    include3: "Băuturile nu sunt incluse — vezi meniul de băuturi",
+    include4:
+      "Combo-urile (pui, vită, rață, fructe de mare) se comandă separat",
+  },
+  live: {
+    closed: "Închis acum",
+    closedDetail: "Ne deschidem la {open} — banda se încălzește.",
+    full: "Banda e plină",
+    fullDetail: "Sushi proaspăt pe bandă acum — nigiri & maki.",
+    rush: "Rush de seară",
+    rushDetail: "Sushi proaspăt pe bandă — nigiri & maki în rotație.",
+    quiet: "Ritm calm",
+    quietDetail: "Locuri libere · banda rulează cu sushi rotativ.",
+    good: "Flux bun",
+    goodDetail: "Sushi train activ — iei ce vrei de pe bandă.",
+    live: "Live Bufet",
+    online: "Online",
+    offline: "Offline",
+    density: "Densitate bandă",
+    max: "Max",
+    high: "Ridicat",
+    mid: "Moderat",
+  },
+  menu: {
+    pageEyebrow: "Meniu digital",
+    pageTitle: "Sushi · Combo · Băuturi",
+    pageDesc:
+      "All you can eat = doar sushi pe bandă. Combo-urile și băuturile se comandă separat — fără PDF.",
+    tabSushi: "Sushi AYCE",
+    tabCombo: "Combo",
+    tabDrinks: "Băuturi",
+    note: "All you can eat = doar sushi pe bandă (100 min). Combo-urile și băuturile se plătesc separat.",
+    inBuffet: "în bufet",
+    stackEyebrow: "Meniu · Card Stack",
+    stackTitle: "Categorii pe bandă",
+    stackHintTouch: "Swipe pe carduri pentru următoarea categorie.",
+    stackHintDesktop:
+      "Scroll pentru a trece prin teanc — fiecare categorie vine spre tine, apoi iese stânga.",
+    stackCta: "Meniu editorial complet",
+    category: "categorie",
+    cats: {
+      sushi: {
+        title: "Sushi Train · All you can eat",
+        subtitle:
+          "Acces nelimitat la bandă — doar sushi · limită 100 minute · băuturile se plătesc separat",
+      },
+      combo: {
+        title: "Alege-ți combo-ul",
+        subtitle: "Garnitură la alegere + fel principal · ~550 g",
+      },
+      bauturi: {
+        title: "Băuturi",
+        subtitle: "Neincluse în all you can eat",
+      },
+    },
+    items: {
+      "california-roll": {
+        name: "California Roll",
+        description: "Uramaki cu surimi, avocado și icre pe orez",
+        tag: "Train",
+      },
+      "salmon-nigiri": {
+        name: "Salmon Nigiri",
+        description: "Somon proaspăt pe orez sushimeshi",
+        tag: "Train",
+      },
+      "tuna-nigiri": {
+        name: "Tuna Nigiri",
+        description: "Ton, tăiat fin pe orez",
+        tag: "Train",
+      },
+      "shrimp-nigiri": {
+        name: "Shrimp Nigiri",
+        description: "Creveți fierți pe orez sushimeshi",
+        tag: "Train",
+      },
+      "maki-salmon": {
+        name: "Maki Salmon",
+        description: "Maki cu somon și avocado, nori la exterior",
+        tag: "Train",
+      },
+      "uramaki-salmon": {
+        name: "Uramaki Salmon",
+        description: "Somon, cremă de brânză și castravete, orez la exterior",
+        tag: "Train",
+      },
+      "boston-roll": {
+        name: "Boston Roll",
+        description: "Surimi, avocado și icre pe orez",
+        tag: "Train",
+      },
+      "maki-tuna": {
+        name: "Maki Tuna",
+        description: "Maki cu ton, nori la exterior",
+        tag: "Train",
+      },
+      "combo-pui": {
+        name: "Meniu Pui",
+        description: "Orice garnitură + pui stir-fry cu legume",
+        tag: "Combo",
+      },
+      "combo-vita": {
+        name: "Meniu Vită",
+        description: "Orice garnitură + vită în sos, cu legume",
+        tag: "Combo",
+      },
+      "combo-rata": {
+        name: "Meniu Rață",
+        description: "Orice garnitură + rață feliată în sos",
+        tag: "Combo",
+      },
+      "combo-mare": {
+        name: "Meniu Fructe de mare",
+        description: "Orice garnitură + fructe de mare & legume",
+        tag: "Combo",
+      },
+      "suc-pere": {
+        name: "Suc din pere",
+        description: "500 ml · 冰糖雪梨",
+        tag: "Asiatice",
+      },
+      "suc-prune": {
+        name: "Suc din prune",
+        description: "500 ml · 酸梅汤",
+        tag: "Asiatice",
+      },
+      "ceai-negru": {
+        name: "Ceai negru",
+        description: "500 ml · 冰红茶",
+        tag: "Asiatice",
+      },
+      "ceai-iasomie": {
+        name: "Ceai de iasomie",
+        description: "500 ml · 茉莉花茶",
+        tag: "Asiatice",
+      },
+      apa: {
+        name: "Apă plată / Apă minerală",
+        description: "500 ml",
+        tag: "Apă",
+      },
+      racoritoare: {
+        name: "Coca-Cola / Fanta / Sprite / Schweppes",
+        description: "500 ml",
+        tag: "Răcoritoare",
+      },
+      fuzetea: { name: "FuzeTea", description: "500 ml", tag: "Răcoritoare" },
+      cappy: { name: "Cappy", description: "330 ml", tag: "Răcoritoare" },
+      "ceai-plante": {
+        name: "Ceai de plante JDB China",
+        description: "310 ml",
+        tag: "Răcoritoare",
+      },
+      "lapte-cocos": {
+        name: "Lapte de cocos China Hainan",
+        description: "245 ml",
+        tag: "Răcoritoare",
+      },
+      asahi: {
+        name: "Asahi",
+        description: "Bere japoneză 5.2% · 330 ml",
+        tag: "Bere",
+      },
+      "heineken-draft": {
+        name: "Heineken Draft",
+        description: "5.0% · 400 ml",
+        tag: "Bere draft",
+      },
+      heineken: {
+        name: "Heineken",
+        description: "5.0% · 330 ml",
+        tag: "Bere",
+      },
+      moretti: {
+        name: "Birra Moretti",
+        description: "4.6% · 330 ml",
+        tag: "Bere",
+      },
+      desperados: {
+        name: "Desperados",
+        description: "5.9% · 400 ml",
+        tag: "Bere",
+      },
+      ciuc: {
+        name: "Ciuc / Radler",
+        description: "5.0% · 330 ml",
+        tag: "Bere",
+      },
+      strongbow: {
+        name: "Strongbow",
+        description: "4.5% · 330 ml",
+        tag: "Cidru",
+      },
+      "vin-recas": {
+        name: "Vin Recaș",
+        description: "12% · 187 ml",
+        tag: "Vin",
+      },
+      jb: { name: "J&B", description: "40% · 50 ml", tag: "Spirtoase" },
+      sake: {
+        name: "Sake japonez (Chamisul)",
+        description: "17.2% · 350 ml",
+        tag: "Sake",
+      },
+    },
+  },
+  vibe: {
+    eyebrow: "Mishi Vibe",
+    title: "Lookbook urban",
+    description:
+      "Sushi train all you can eat + combo-uri (pui, vită, rață, fructe de mare) și atmosfera de izakaya modern.",
+    explore: "Explorează atmosfera",
+  },
+  cta: {
+    eyebrow: "Masa ta te așteaptă",
+    title1: "Urcă pe bandă.",
+    title2: "Rămâi la masă.",
+    body: "Rezervă pentru weekend sau treci pe la prânz — banda rulează oricum.",
+    reserve: "Rezervă acum",
+    directions: "Cum ajungi",
+  },
+  footer: {
+    blurb:
+      "Bufet asiatic & sushi train — izakaya modern lângă Mega Mall, București.",
+    nav: "Navigare",
+    location: "Locație",
+    rights: "Toate drepturile rezervate.",
+  },
+  about: {
+    eyebrow: "Despre / Atmosferă",
+    title: "Mishi Vibe",
+    description:
+      "Lookbook urban — atmosfera locației, dincolo de farfuria de sushi.",
+    s1: "Izakaya modern",
+    s1t: "Lumină joasă, neon sângeriu, zgomot blând de farfurii pe bandă. Ritualul sushi train, în București, lângă Mega Mall.",
+    s2: "Sushi + combo",
+    s2t: "All you can eat pe bandă înseamnă sushi. Dacă vrei pui, vită, rață sau fructe de mare — alegi un combo separat, cu garnitură la alegere.",
+    s3: "Lângă Mega Mall",
+    s3t: "Ușor de ajuns, parcare în complex, masă pentru prieteni sau cină pe bandă. Atmosfera rămâne aceeași: neo-noir, caldă, dinamică.",
+    gallery: "Galerie atmosferă",
+    reserve: "Rezervă atmosfera",
+  },
+  reserve: {
+    eyebrow: "Rezervări",
+    title: "Păstrează-ți locul pe bandă",
+    description:
+      "Completează formularul — te confirmăm telefonic. Weekend-urile se umplu rapid.",
+    schedule: "Program",
+    priceTitle: "Preț bufet",
+  },
+  contact: {
+    eyebrow: "Contact",
+    title: "Unde ne găsești",
+    description:
+      "Mega Mall, etajul 2, București. Parcare în complex.",
+    address: "Adresă",
+    phone: "Telefon",
+    email: "Email",
+    hours: "Program",
+    reserve: "Rezervă masă",
+    call: "Sună acum",
+    maps: "Deschide în Maps →",
+  },
+  form: {
+    name: "Nume",
+    phone: "Telefon",
+    date: "Data",
+    guests: "Persoane",
+    time: "Ora preferată",
+    note: "Notă (opțional)",
+    notePh: "Alergii, aniversare, preferințe...",
+    namePh: "Numele tău",
+    submit: "Confirmă rezervarea",
+    sending: "Se trimite...",
+    okEyebrow: "Confirmat",
+    okTitle: "Te așteptăm pe bandă.",
+    okBody: "Am înregistrat cererea. Te contactăm în curând pentru confirmare.",
+    again: "Trimite altă rezervare",
+  },
+};
+
+const en: Dict = {
+  ...structuredClone(ro),
+  nav: {
+    home: "Home",
+    menu: "Menu",
+    about: "Atmosphere",
+    reserve: "Reservations",
+    contact: "Contact",
+    reserveCta: "Book",
+  },
+  common: {
+    lei: "lei",
+    language: "Language",
+    openMenu: "Open menu",
+    closeMenu: "Close menu",
+  },
+  hero: {
+    location: "Bucharest, Mega Mall",
+    tagline:
+      "Asian buffet & sushi train — plates that move, flavours that stay. All you can eat: sushi. Combos & drinks separately.",
+    reserve: "Book a table",
+    seeMenu: "See the menu",
+    liveBand: "What's on the belt now",
+    scrollHint: "↓ Scroll to zoom into the belt",
+  },
+  pricing: {
+    ...ro.pricing,
+    eyebrow: "Full transparency",
+    title: "Prices & hours",
+    description:
+      "No hidden PDFs. See exactly what unlimited access costs and what’s included.",
+    includes: "What’s included",
+    schedule: "Opening hours",
+    footnote:
+      "* 100-minute limit. Drinks not included. Weekend price (94.90 lei) also applies on holidays.",
+    weekdayDays: "Mon – Thu",
+    weekdayNote: "Unlimited buffet & sushi train access",
+    weekendDays: "Fri – Sun & holidays",
+    weekendNote: "Same unlimited access · weekend / holiday price",
+    kidsFreeLabel: "Kids",
+    kidsFreeDays: "Under 3 years",
+    kidsFreePrice: "Free",
+    kidsFreeNote: "Free entry for the little ones",
+    kidsDiscLabel: "Kids",
+    kidsDiscDays: "Up to 120 cm",
+    kidsDiscNote: "35% off the day’s price (weekday or weekend)",
+    everyDay: "Mon – Sun",
+    include1: "Unlimited sushi train access (nigiri & maki)",
+    include2: "100-minute table limit",
+    include3: "Drinks not included — see the drinks menu",
+    include4: "Combos (chicken, beef, duck, seafood) ordered separately",
+  },
+  live: {
+    closed: "Closed now",
+    closedDetail: "We open at {open} — the belt is warming up.",
+    full: "Belt is full",
+    fullDetail: "Fresh sushi on the belt now — nigiri & maki.",
+    rush: "Evening rush",
+    rushDetail: "Fresh sushi rotating on the belt.",
+    quiet: "Calm pace",
+    quietDetail: "Seats available · sushi rotating steadily.",
+    good: "Good flow",
+    goodDetail: "Sushi train active — grab what you want.",
+    live: "Live Buffet",
+    online: "Online",
+    offline: "Offline",
+    density: "Belt density",
+    max: "Max",
+    high: "High",
+    mid: "Moderate",
+  },
+  menu: {
+    ...ro.menu,
+    pageEyebrow: "Digital menu",
+    pageTitle: "Sushi · Combo · Drinks",
+    pageDesc:
+      "All you can eat = sushi on the belt only. Combos and drinks ordered separately — no PDF.",
+    tabSushi: "Sushi AYCE",
+    tabCombo: "Combo",
+    tabDrinks: "Drinks",
+    note: "All you can eat = sushi only (100 min). Combos and drinks are charged separately.",
+    inBuffet: "in buffet",
+    stackEyebrow: "Menu · Card Stack",
+    stackTitle: "Categories on the belt",
+    stackHintTouch: "Swipe cards for the next category.",
+    stackHintDesktop:
+      "Scroll through the stack — each category comes forward, then exits left.",
+    stackCta: "Full editorial menu",
+    category: "category",
+    cats: {
+      sushi: {
+        title: "Sushi Train · All you can eat",
+        subtitle:
+          "Unlimited belt access — sushi only · 100-minute limit · drinks sold separately",
+      },
+      combo: {
+        title: "Choose your combo",
+        subtitle: "Any side + main · ~550 g",
+      },
+      bauturi: {
+        title: "Drinks",
+        subtitle: "Not included in all you can eat",
+      },
+    },
+    items: {
+      ...ro.menu.items,
+      "california-roll": {
+        name: "California Roll",
+        description: "Uramaki with surimi, avocado and roe",
+        tag: "Train",
+      },
+      "salmon-nigiri": {
+        name: "Salmon Nigiri",
+        description: "Fresh salmon on sushi rice",
+        tag: "Train",
+      },
+      "tuna-nigiri": {
+        name: "Tuna Nigiri",
+        description: "Finely sliced tuna on rice",
+        tag: "Train",
+      },
+      "shrimp-nigiri": {
+        name: "Shrimp Nigiri",
+        description: "Cooked shrimp on sushi rice",
+        tag: "Train",
+      },
+      "maki-salmon": {
+        name: "Maki Salmon",
+        description: "Salmon and avocado maki, nori outside",
+        tag: "Train",
+      },
+      "uramaki-salmon": {
+        name: "Uramaki Salmon",
+        description: "Salmon, cream cheese and cucumber, rice outside",
+        tag: "Train",
+      },
+      "boston-roll": {
+        name: "Boston Roll",
+        description: "Surimi, avocado and roe on rice",
+        tag: "Train",
+      },
+      "maki-tuna": {
+        name: "Maki Tuna",
+        description: "Tuna maki, nori outside",
+        tag: "Train",
+      },
+      "combo-pui": {
+        name: "Chicken Menu",
+        description: "Any side + stir-fried chicken with vegetables",
+        tag: "Combo",
+      },
+      "combo-vita": {
+        name: "Beef Menu",
+        description: "Any side + beef in sauce with vegetables",
+        tag: "Combo",
+      },
+      "combo-rata": {
+        name: "Duck Menu",
+        description: "Any side + sliced duck in sauce",
+        tag: "Combo",
+      },
+      "combo-mare": {
+        name: "Seafood Menu",
+        description: "Any side + seafood & vegetables",
+        tag: "Combo",
+      },
+      "suc-pere": {
+        name: "Pear juice",
+        description: "500 ml · 冰糖雪梨",
+        tag: "Asian",
+      },
+      "suc-prune": {
+        name: "Plum juice",
+        description: "500 ml · 酸梅汤",
+        tag: "Asian",
+      },
+      "ceai-negru": {
+        name: "Black tea",
+        description: "500 ml · 冰红茶",
+        tag: "Asian",
+      },
+      "ceai-iasomie": {
+        name: "Jasmine tea",
+        description: "500 ml · 茉莉花茶",
+        tag: "Asian",
+      },
+      apa: {
+        name: "Still / sparkling water",
+        description: "500 ml",
+        tag: "Water",
+      },
+      racoritoare: {
+        name: "Coca-Cola / Fanta / Sprite / Schweppes",
+        description: "500 ml",
+        tag: "Soft drinks",
+      },
+      "ceai-plante": {
+        name: "Herbal tea JDB China",
+        description: "310 ml",
+        tag: "Soft drinks",
+      },
+      "lapte-cocos": {
+        name: "Coconut milk China Hainan",
+        description: "245 ml",
+        tag: "Soft drinks",
+      },
+      asahi: {
+        name: "Asahi",
+        description: "Japanese beer 5.2% · 330 ml",
+        tag: "Beer",
+      },
+      "heineken-draft": {
+        name: "Heineken Draft",
+        description: "5.0% · 400 ml",
+        tag: "Draft",
+      },
+      sake: {
+        name: "Japanese sake (Chamisul)",
+        description: "17.2% · 350 ml",
+        tag: "Sake",
+      },
+    },
+  },
+  vibe: {
+    eyebrow: "Mishi Vibe",
+    title: "Urban lookbook",
+    description:
+      "Sushi train all you can eat + combos (chicken, beef, duck, seafood) and modern izakaya atmosphere.",
+    explore: "Explore the vibe",
+  },
+  cta: {
+    eyebrow: "Your table is waiting",
+    title1: "Hop on the belt.",
+    title2: "Stay at the table.",
+    body: "Book for the weekend or drop by at lunch — the belt keeps running.",
+    reserve: "Book now",
+    directions: "How to get here",
+  },
+  footer: {
+    blurb:
+      "Asian buffet & sushi train — modern izakaya next to Mega Mall, Bucharest.",
+    nav: "Navigate",
+    location: "Location",
+    rights: "All rights reserved.",
+  },
+  about: {
+    eyebrow: "About / Atmosphere",
+    title: "Mishi Vibe",
+    description: "Urban lookbook — the room beyond the sushi plate.",
+    s1: "Modern izakaya",
+    s1t: "Low light, crimson neon, soft clatter of plates on the belt. Sushi-train ritual in Bucharest, by Mega Mall.",
+    s2: "Sushi + combo",
+    s2t: "All you can eat on the belt means sushi. For chicken, beef, duck or seafood — order a separate combo with any side.",
+    s3: "By Mega Mall",
+    s3t: "Easy to reach, parking in the complex, table for friends or a quick belt dinner. Same neo-noir atmosphere.",
+    gallery: "Atmosphere gallery",
+    reserve: "Book the vibe",
+  },
+  reserve: {
+    eyebrow: "Reservations",
+    title: "Save your spot on the belt",
+    description:
+      "Fill in the form — we’ll confirm by phone. Weekends fill up fast.",
+    schedule: "Hours",
+    priceTitle: "Buffet price",
+  },
+  contact: {
+    eyebrow: "Contact",
+    title: "Find us",
+    description: "Mega Mall, 2nd floor, Bucharest. Parking on site.",
+    address: "Address",
+    phone: "Phone",
+    email: "Email",
+    hours: "Hours",
+    reserve: "Book a table",
+    call: "Call now",
+    maps: "Open in Maps →",
+  },
+  form: {
+    name: "Name",
+    phone: "Phone",
+    date: "Date",
+    guests: "Guests",
+    time: "Preferred time",
+    note: "Note (optional)",
+    notePh: "Allergies, birthday, preferences...",
+    namePh: "Your name",
+    submit: "Confirm reservation",
+    sending: "Sending...",
+    okEyebrow: "Confirmed",
+    okTitle: "See you on the belt.",
+    okBody: "We’ve logged your request. We’ll contact you soon to confirm.",
+    again: "Send another reservation",
+  },
+};
+
+const ja: Dict = {
+  ...structuredClone(en),
+  nav: {
+    home: "ホーム",
+    menu: "メニュー",
+    about: "雰囲気",
+    reserve: "予約",
+    contact: "アクセス",
+    reserveCta: "予約する",
+  },
+  common: {
+    lei: "レイ",
+    language: "言語",
+    openMenu: "メニューを開く",
+    closeMenu: "メニューを閉じる",
+  },
+  hero: {
+    location: "ブカレスト · メガモール",
+    tagline:
+      "アジアンビュッフェ＆寿司トレイン。食べ放題は寿司のみ。定食・ドリンクは別料金。",
+    reserve: "今すぐ予約",
+    seeMenu: "メニューを見る",
+    liveBand: "今のレーンを見る",
+    scrollHint: "↓ スクロールでレーンにズーム",
+  },
+  pricing: {
+    ...en.pricing,
+    eyebrow: "料金の透明性",
+    title: "料金・営業時間",
+    description: "PDF不要。食べ放題の料金と内容をそのまま掲載。",
+    includes: "含まれるもの",
+    schedule: "営業時間",
+    footnote:
+      "※制限時間100分。ドリンク別料金。週末料金（94.90レイ）は祝日も適用。",
+    weekdayDays: "月〜木",
+    weekdayNote: "寿司トレイン食べ放題",
+    weekendDays: "金〜日・祝日",
+    weekendNote: "同じ食べ放題 · 週末／祝日料金",
+    kidsFreeLabel: "お子様",
+    kidsFreeDays: "3歳未満",
+    kidsFreePrice: "無料",
+    kidsFreeNote: "無料入場",
+    kidsDiscLabel: "お子様",
+    kidsDiscDays: "身長120cmまで",
+    kidsDiscNote: "当日料金から35%オフ",
+    everyDay: "月〜日",
+    include1: "寿司トレイン食べ放題（にぎり・巻き）",
+    include2: "制限時間100分",
+    include3: "ドリンク別料金 — ドリンクメニュー参照",
+    include4: "コンボ（鶏・牛・鴨・シーフード）は別注文",
+  },
+  live: {
+    closed: "ただいま閉店",
+    closedDetail: "{open}オープン — レーン準備中。",
+    full: "レーン満載",
+    fullDetail: "新鮮な寿司がレーンを流れています。",
+    rush: "ディナータイム",
+    rushDetail: "にぎり＆巻き寿司が回転中。",
+    quiet: "落ち着いた時間",
+    quietDetail: "空席あり · 寿司が穏やかに流れます。",
+    good: "好調",
+    goodDetail: "寿司トレイン稼働中。",
+    live: "ライブビュッフェ",
+    online: "営業中",
+    offline: "閉店",
+    density: "レーン密度",
+    max: "最大",
+    high: "高",
+    mid: "中",
+  },
+  menu: {
+    ...en.menu,
+    pageEyebrow: "デジタルメニュー",
+    pageTitle: "寿司 · 定食 · ドリンク",
+    pageDesc:
+      "食べ放題はレーンの寿司のみ。定食とドリンクは別注文。",
+    tabSushi: "寿司食べ放題",
+    tabCombo: "定食",
+    tabDrinks: "ドリンク",
+    note: "食べ放題＝寿司のみ（100分）。定食・ドリンクは別料金。",
+    inBuffet: "食べ放題",
+    stackEyebrow: "メニュー · カード",
+    stackTitle: "カテゴリー",
+    stackHintTouch: "スワイプで次のカテゴリーへ。",
+    stackHintDesktop: "スクロールでカードをめくります。",
+    stackCta: "フルメニューを見る",
+    category: "カテゴリ",
+    cats: {
+      sushi: {
+        title: "寿司トレイン · 食べ放題",
+        subtitle: "レーン食べ放題 — 寿司のみ · 100分制限 · ドリンク別",
+      },
+      combo: {
+        title: "コンボを選ぶ",
+        subtitle: "好きな付け合わせ + メイン · 約550g",
+      },
+      bauturi: {
+        title: "ドリンク",
+        subtitle: "食べ放題に含まれません",
+      },
+    },
+    items: {
+      ...en.menu.items,
+      "ceai-iasomie": {
+        name: "ジャスミン茶",
+        description: "500 ml · 茉莉花茶",
+        tag: "アジアン",
+      },
+      "suc-pere": {
+        name: "梨ジュース",
+        description: "500 ml · 冰糖雪梨",
+        tag: "アジアン",
+      },
+      "suc-prune": {
+        name: "梅ジュース",
+        description: "500 ml · 酸梅汤",
+        tag: "アジアン",
+      },
+      "ceai-negru": {
+        name: "紅茶",
+        description: "500 ml · 冰红茶",
+        tag: "アジアン",
+      },
+      "combo-pui": {
+        name: "チキン定食",
+        description: "好きな付け合わせ + 野菜炒めチキン",
+        tag: "定食",
+      },
+      "combo-vita": {
+        name: "ビーフ定食",
+        description: "好きな付け合わせ + 牛肉炒め",
+        tag: "定食",
+      },
+      "combo-rata": {
+        name: "ダック定食",
+        description: "好きな付け合わせ + 鴨肉",
+        tag: "定食",
+      },
+      "combo-mare": {
+        name: "シーフード定食",
+        description: "好きな付け合わせ + 海鮮野菜",
+        tag: "定食",
+      },
+    },
+  },
+  vibe: {
+    eyebrow: "Mishi Vibe",
+    title: "アーバン・ルックブック",
+    description:
+      "寿司トレイン食べ放題 + 定食（鶏・牛・鴨・海鮮）とモダン居酒屋の空気感。",
+    explore: "雰囲気を見る",
+  },
+  cta: {
+    eyebrow: "席が待っています",
+    title1: "レーンへ。",
+    title2: "テーブルで。",
+    body: "週末予約もランチもOK — レーンは回り続けます。",
+    reserve: "今すぐ予約",
+    directions: "アクセス",
+  },
+  footer: {
+    blurb:
+      "アジアンビュッフェ＆寿司トレイン — メガモール近くのモダン居酒屋。",
+    nav: "ナビ",
+    location: "場所",
+    rights: "無断転載を禁じます。",
+  },
+  about: {
+    eyebrow: "について / 雰囲気",
+    title: "Mishi Vibe",
+    description: "寿司皿の向こうにある空間のルックブック。",
+    s1: "モダン居酒屋",
+    s1t: "低い照明、赤いネオン、レーンの皿の音。ブカレスト・メガモール近くの寿司トレイン。",
+    s2: "寿司 + 定食",
+    s2t: "レーンの食べ放題は寿司。鶏・牛・鴨・海鮮は別定食で。",
+    s3: "メガモール近く",
+    s3t: "アクセス良好、駐車場あり。ネオノワールな空気感。",
+    gallery: "ギャラリー",
+    reserve: "雰囲気を予約",
+  },
+  reserve: {
+    eyebrow: "予約",
+    title: "レーンの席を確保",
+    description: "フォーム送信後、電話で確認します。週末は混み合います。",
+    schedule: "営業時間",
+    priceTitle: "ビュッフェ料金",
+  },
+  contact: {
+    eyebrow: "アクセス",
+    title: "場所",
+    description: "ブカレスト・メガモール2階。",
+    address: "住所",
+    phone: "電話",
+    email: "メール",
+    hours: "営業時間",
+    reserve: "予約する",
+    call: "電話する",
+    maps: "マップで開く →",
+  },
+  form: {
+    name: "お名前",
+    phone: "電話",
+    date: "日付",
+    guests: "人数",
+    time: "希望時間",
+    note: "メモ（任意）",
+    notePh: "アレルギー、お祝いなど...",
+    namePh: "お名前",
+    submit: "予約を確定",
+    sending: "送信中...",
+    okEyebrow: "受付完了",
+    okTitle: "レーンでお待ちしています。",
+    okBody: "ご予約を受け付けました。確認のご連絡をします。",
+    again: "別の予約を送る",
+  },
+};
+
+const zh: Dict = {
+  ...structuredClone(en),
+  nav: {
+    home: "首页",
+    menu: "菜单",
+    about: "氛围",
+    reserve: "预订",
+    contact: "联系",
+    reserveCta: "预订",
+  },
+  common: {
+    lei: "列伊",
+    language: "语言",
+    openMenu: "打开菜单",
+    closeMenu: "关闭菜单",
+  },
+  hero: {
+    location: "布加勒斯特 · Mega Mall",
+    tagline:
+      "亚洲自助与寿司传送带。自助仅含寿司。套餐与饮品另计。",
+    reserve: "立即预订",
+    seeMenu: "查看菜单",
+    liveBand: "看看传送带上有什么",
+    scrollHint: "↓ 下滑放大传送带",
+  },
+  pricing: {
+    ...en.pricing,
+    eyebrow: "价格透明",
+    title: "价格与营业时间",
+    description: "无需翻PDF。自助价格与包含内容一目了然。",
+    includes: "包含内容",
+    schedule: "营业时间",
+    footnote:
+      "* 限时100分钟。饮品另计。周末价（94.90列伊）亦适用于节假日。",
+    weekdayDays: "周一至周四",
+    weekdayNote: "寿司传送带畅吃",
+    weekendDays: "周五至周日及节假日",
+    weekendNote: "同样畅吃 · 周末/节假日价格",
+    kidsFreeLabel: "儿童",
+    kidsFreeDays: "3岁以下",
+    kidsFreePrice: "免费",
+    kidsFreeNote: "幼儿免费",
+    kidsDiscLabel: "儿童",
+    kidsDiscDays: "身高120厘米以内",
+    kidsDiscNote: "按当日价格优惠35%",
+    everyDay: "周一至周日",
+    include1: "寿司传送带畅吃（握寿司、卷寿司）",
+    include2: "限时100分钟",
+    include3: "饮品另计 — 见饮品菜单",
+    include4: "套餐（鸡、牛、鸭、海鲜）需另点",
+  },
+  live: {
+    closed: "现已打烊",
+    closedDetail: "{open} 开门 — 传送带准备中。",
+    full: "传送带很满",
+    fullDetail: "新鲜寿司正在传送 — 握寿司与卷寿司。",
+    rush: "晚餐高峰",
+    rushDetail: "寿司轮转上线。",
+    quiet: "人流平缓",
+    quietDetail: "有空位 · 寿司稳定流转。",
+    good: "状态良好",
+    goodDetail: "寿司传送带运行中。",
+    live: "实时自助",
+    online: "营业中",
+    offline: "已打烊",
+    density: "传送带密度",
+    max: "最高",
+    high: "高",
+    mid: "中",
+  },
+  menu: {
+    ...en.menu,
+    pageEyebrow: "数字菜单",
+    pageTitle: "寿司 · 套餐 · 饮品",
+    pageDesc: "自助仅含传送带寿司。套餐与饮品另点。",
+    tabSushi: "寿司自助",
+    tabCombo: "套餐",
+    tabDrinks: "饮品",
+    note: "自助仅含寿司（100分钟）。套餐与饮品另计。",
+    inBuffet: "自助内",
+    stackEyebrow: "菜单 · 卡片",
+    stackTitle: "分类",
+    stackHintTouch: "滑动卡片查看下一类。",
+    stackHintDesktop: "滚动翻阅卡片栈。",
+    stackCta: "完整菜单",
+    category: "类别",
+    cats: {
+      sushi: {
+        title: "寿司传送带 · 自助",
+        subtitle: "畅吃传送带 — 仅寿司 · 限时100分钟 · 饮品另计",
+      },
+      combo: {
+        title: "选择套餐",
+        subtitle: "任意配菜 + 主菜 · 约550克",
+      },
+      bauturi: {
+        title: "饮品",
+        subtitle: "不含在自助内",
+      },
+    },
+    items: {
+      ...en.menu.items,
+      "ceai-iasomie": {
+        name: "茉莉花茶",
+        description: "500 ml · 茉莉花茶",
+        tag: "亚洲饮品",
+      },
+      "suc-pere": {
+        name: "冰糖雪梨",
+        description: "500 ml · 冰糖雪梨",
+        tag: "亚洲饮品",
+      },
+      "suc-prune": {
+        name: "酸梅汤",
+        description: "500 ml · 酸梅汤",
+        tag: "亚洲饮品",
+      },
+      "ceai-negru": {
+        name: "冰红茶",
+        description: "500 ml · 冰红茶",
+        tag: "亚洲饮品",
+      },
+      "combo-pui": {
+        name: "鸡肉套餐",
+        description: "任意配菜 + 炒鸡肉蔬菜",
+        tag: "套餐",
+      },
+      "combo-vita": {
+        name: "牛肉套餐",
+        description: "任意配菜 + 酱汁牛肉",
+        tag: "套餐",
+      },
+      "combo-rata": {
+        name: "鸭肉套餐",
+        description: "任意配菜 + 酱汁鸭片",
+        tag: "套餐",
+      },
+      "combo-mare": {
+        name: "海鲜套餐",
+        description: "任意配菜 + 海鲜蔬菜",
+        tag: "套餐",
+      },
+      apa: {
+        name: "矿泉水 / 气泡水",
+        description: "500 ml",
+        tag: "水",
+      },
+    },
+  },
+  vibe: {
+    eyebrow: "Mishi Vibe",
+    title: "都市图集",
+    description: "寿司自助 + 套餐（鸡、牛、鸭、海鲜）与现代居酒屋氛围。",
+    explore: "探索氛围",
+  },
+  cta: {
+    eyebrow: "座位已备好",
+    title1: "上传送带。",
+    title2: "坐下来。",
+    body: "周末预订或午餐路过 — 传送带不停。",
+    reserve: "立即预订",
+    directions: "怎么走",
+  },
+  footer: {
+    blurb: "亚洲自助与寿司传送带 — Mega Mall旁的现代居酒屋。",
+    nav: "导航",
+    location: "位置",
+    rights: "版权所有。",
+  },
+  about: {
+    eyebrow: "关于 / 氛围",
+    title: "Mishi Vibe",
+    description: "都市图集 — 寿司盘之外的空间。",
+    s1: "现代居酒屋",
+    s1t: "低光、猩红霓虹、传送带盘碟轻响。布加勒斯特 Mega Mall旁的寿司传送带仪式。",
+    s2: "寿司 + 套餐",
+    s2t: "传送带自助是寿司。鸡、牛、鸭、海鲜请点独立套餐。",
+    s3: "Mega Mall旁",
+    s3t: "交通便利，园区停车。同样的 neo-noir 氛围。",
+    gallery: "氛围图集",
+    reserve: "预订氛围",
+  },
+  reserve: {
+    eyebrow: "预订",
+    title: "锁定传送带座位",
+    description: "填写表格 — 我们电话确认。周末很快订满。",
+    schedule: "营业时间",
+    priceTitle: "自助价格",
+  },
+  contact: {
+    eyebrow: "联系",
+    title: "找到我们",
+    description: "布加勒斯特 Mega Mall 2楼。",
+    address: "地址",
+    phone: "电话",
+    email: "邮箱",
+    hours: "营业时间",
+    reserve: "预订座位",
+    call: "立即拨打",
+    maps: "在地图中打开 →",
+  },
+  form: {
+    name: "姓名",
+    phone: "电话",
+    date: "日期",
+    guests: "人数",
+    time: "偏好时间",
+    note: "备注（可选）",
+    notePh: "过敏、生日、偏好...",
+    namePh: "您的姓名",
+    submit: "确认预订",
+    sending: "发送中...",
+    okEyebrow: "已确认",
+    okTitle: "传送带见。",
+    okBody: "已收到请求。我们会尽快联系确认。",
+    again: "再发一单预订",
+  },
+};
+
+export const dictionaries: Record<Locale, Dict> = { ro, en, ja, zh };
+
+export type Dictionary = Dict;
