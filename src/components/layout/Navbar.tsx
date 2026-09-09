@@ -44,14 +44,16 @@ export function Navbar() {
 
   return (
     <header
-      className={`fixed top-0 inset-x-0 z-40 transition-all duration-500 pt-[env(safe-area-inset-top)] ${
-        scrolled || open
-          ? "bg-bg-deep/90 backdrop-blur-md border-b border-line"
-          : "bg-transparent"
+      className={`fixed top-0 inset-x-0 z-50 transition-all duration-500 pt-[env(safe-area-inset-top)] ${
+        open
+          ? "bg-bg-deep border-b border-line"
+          : scrolled
+            ? "bg-bg-deep/95 backdrop-blur-md border-b border-line"
+            : "bg-transparent"
       }`}
     >
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-3 px-4 sm:px-5 md:px-8 py-3 sm:py-4">
-        <TransitionLink href="/" className="group relative z-50 shrink-0" data-magnetic>
+        <TransitionLink href="/" className="group relative z-[60] shrink-0" data-magnetic>
           <span className="font-display text-2xl sm:text-3xl tracking-wide text-ink group-hover:text-mishi-red transition-colors">
             Mishi
           </span>
@@ -90,7 +92,7 @@ export function Navbar() {
           </TransitionLink>
         </nav>
 
-        <div className="flex lg:hidden items-center gap-2 relative z-50">
+        <div className="flex lg:hidden items-center gap-2 relative z-[60]">
           <LanguageSwitcher />
           <button
             type="button"
@@ -112,9 +114,11 @@ export function Navbar() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.25 }}
-            className="lg:hidden fixed inset-0 z-40 bg-bg-deep/98 backdrop-blur-xl pt-[calc(env(safe-area-inset-top)+4.5rem)] pb-[env(safe-area-inset-bottom)]"
+            className="lg:hidden fixed inset-0 z-[55] bg-[#0a0a0a] pt-[calc(env(safe-area-inset-top)+4.5rem)] pb-[env(safe-area-inset-bottom)]"
           >
-            <nav className="flex h-full flex-col px-6">
+            {/* Extra opaque layer so page content never bleeds through */}
+            <div className="pointer-events-none absolute inset-0 bg-[#0a0a0a]" aria-hidden />
+            <nav className="relative z-[1] flex h-full flex-col px-6 bg-[#0a0a0a]">
               <div className="flex flex-1 flex-col justify-center gap-1">
                 {links.map((link, i) => (
                   <motion.div
