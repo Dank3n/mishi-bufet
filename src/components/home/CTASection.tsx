@@ -3,6 +3,7 @@
 import { Reveal } from "@/components/ui/Reveal";
 import { Button } from "@/components/ui/Button";
 import { useLocale } from "@/i18n/LocaleProvider";
+import { location } from "@/data/pricing";
 
 export function CTASection() {
   const { t } = useLocale();
@@ -27,8 +28,8 @@ export function CTASection() {
               {t.cta.body}
             </p>
             <div className="mt-8 sm:mt-10 flex flex-col sm:flex-row flex-wrap justify-center gap-3 sm:gap-4">
-              <Button href="/rezervari" className="w-full sm:w-auto min-h-12">
-                {t.cta.reserve}
+              <Button href={location.phoneHref} className="w-full sm:w-auto min-h-12">
+                {t.contact.call}
               </Button>
               <Button
                 href="/contact"

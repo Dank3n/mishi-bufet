@@ -49,9 +49,23 @@ export function Button(props: AsLink | AsButton) {
     const { href, onClick, ...linkRest } = rest as AsLink;
     const isInternal = href.startsWith("/");
 
+    if (!isInternal) {
+      return (
+        <a
+          href={href}
+          className={classes}
+          data-magnetic
+          onClick={onClick}
+          {...linkRest}
+        >
+          {children}
+        </a>
+      );
+    }
+
     const handleClick = (e: MouseEvent<HTMLAnchorElement>) => {
       onClick?.(e);
-      if (e.defaultPrevented || !isInternal || !fx) return;
+      if (e.defaultPrevented || !fx) return;
       if (href === pathname) return;
       e.preventDefault();
       fx.startTransition(href, () => router.push(href));

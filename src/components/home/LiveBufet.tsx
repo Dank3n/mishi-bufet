@@ -49,7 +49,7 @@ const levelStyles = {
 const timeLocales: Record<Locale, string> = {
   ro: "ro-RO",
   en: "en-GB",
-  ja: "ja-JP",
+  ru: "ru-RU",
   zh: "zh-CN",
 };
 

@@ -4,7 +4,7 @@ import type { ReactNode } from "react";
 import { PageHero } from "@/components/layout/PageHero";
 import { Reveal } from "@/components/ui/Reveal";
 import { Button } from "@/components/ui/Button";
-import { PropExplosion } from "@/components/fx/PropExplosion";
+import { DetaliiGallery } from "@/components/ui/DetaliiGallery";
 import { location } from "@/data/pricing";
 import { MapPin, Phone, Mail, Clock } from "lucide-react";
 import { useLocale } from "@/i18n/LocaleProvider";
@@ -21,8 +21,7 @@ export function ContactPageContent() {
         kanji="所"
       />
 
-      <section className="relative mx-auto max-w-7xl px-5 md:px-8 pb-24 overflow-hidden">
-        <PropExplosion />
+      <section className="relative mx-auto max-w-7xl overflow-hidden px-5 pb-10 sm:pb-14 md:px-8">
         <div className="relative z-10 grid gap-10 lg:grid-cols-2">
           <div className="space-y-6">
             <Reveal>
@@ -49,16 +48,16 @@ export function ContactPageContent() {
             </Reveal>
             <Reveal delay={0.16}>
               <div className="border border-line p-6">
-                <div className="flex items-center gap-3 mb-4">
+                <div className="mb-4 flex items-center gap-3">
                   <Clock className="text-mishi-red" size={20} />
-                  <span className="text-[10px] tracking-[0.3em] uppercase text-ink-muted">
+                  <span className="text-[10px] tracking-[0.3em] text-ink-muted uppercase">
                     {t.contact.hours}
                   </span>
                 </div>
                 <ul>
-                  <li className="menu-row flex justify-between py-3 border-b border-line last:border-0 text-sm transition-colors">
+                  <li className="menu-row flex justify-between border-b border-line py-3 text-sm transition-colors last:border-0">
                     <span>{t.pricing.everyDay}</span>
-                    <span className="menu-price text-mishi-red font-display text-base">
+                    <span className="menu-price font-display text-base text-mishi-red">
                       {t.pricing.hours}
                     </span>
                   </li>
@@ -67,17 +66,25 @@ export function ContactPageContent() {
             </Reveal>
 
             <Reveal delay={0.2}>
+              <div className="border border-mishi-red/35 bg-mishi-red/5 p-6">
+                <p className="mb-2 text-[10px] tracking-[0.3em] text-mishi-red uppercase">
+                  {t.contact.reserveTitle}
+                </p>
+                <p className="text-sm font-light leading-relaxed text-ink-muted">
+                  {t.contact.reserveNote}
+                </p>
+              </div>
+            </Reveal>
+
+            <Reveal delay={0.24}>
               <div className="flex flex-wrap gap-4">
-                <Button href="/rezervari">{t.contact.reserve}</Button>
-                <Button href={location.phoneHref} variant="ghost">
-                  {t.contact.call}
-                </Button>
+                <Button href={location.phoneHref}>{t.contact.call}</Button>
               </div>
             </Reveal>
           </div>
 
           <Reveal delay={0.1}>
-            <div className="relative min-h-[360px] md:min-h-full border border-line overflow-hidden bg-bg-elevated">
+            <div className="relative min-h-[360px] overflow-hidden border border-line bg-bg-elevated md:min-h-full">
               <div
                 className="absolute inset-0"
                 style={{
@@ -96,16 +103,16 @@ export function ContactPageContent() {
                 }}
               />
               <div className="relative z-10 flex h-full min-h-[360px] flex-col items-center justify-center p-8 text-center">
-                <p className="font-display text-5xl text-mishi-red mb-2">美</p>
+                <p className="mb-2 font-display text-5xl text-mishi-red">美</p>
                 <p className="font-display text-2xl text-ink">Mega Mall</p>
-                <p className="mt-2 text-sm text-ink-muted font-light max-w-xs">
+                <p className="mt-2 max-w-xs text-sm font-light text-ink-muted">
                   {location.mapsHint}
                 </p>
                 <a
                   href="https://maps.google.com/?q=Mishi+Bufet+Mega+Mall+Bucuresti"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="mt-8 text-xs tracking-[0.3em] uppercase text-mishi-red hover:underline underline-offset-4"
+                  className="mt-8 text-xs tracking-[0.3em] text-mishi-red uppercase underline-offset-4 hover:underline"
                 >
                   {t.contact.maps}
                 </a>
@@ -114,6 +121,8 @@ export function ContactPageContent() {
           </Reveal>
         </div>
       </section>
+
+      <DetaliiGallery className="pb-8 sm:pb-12" />
     </>
   );
 }

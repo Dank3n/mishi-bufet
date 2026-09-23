@@ -1,4 +1,4 @@
-export const locales = ["ro", "en", "ja", "zh"] as const;
+export const locales = ["ro", "en", "ru", "zh"] as const;
 export type Locale = (typeof locales)[number];
 
 export const localeLabels: Record<
@@ -7,7 +7,7 @@ export const localeLabels: Record<
 > = {
   ro: { short: "RO", native: "Română", flag: "RO" },
   en: { short: "EN", native: "English", flag: "EN" },
-  ja: { short: "日本語", native: "日本語", flag: "JA" },
+  ru: { short: "RU", native: "Русский", flag: "RU" },
   zh: { short: "中文", native: "中文", flag: "ZH" },
 };
 

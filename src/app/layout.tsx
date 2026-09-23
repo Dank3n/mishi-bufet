@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     template: "%s · Mishi Bufet",
   },
   description:
-    "Bufet asiatic și sushi train lângă Mega Mall, București. All you can eat sushi, combo-uri și meniu de băuturi.",
+    "Bufet asiatic și sushi train în Mega Mall, București. All you can eat sushi, combo-uri și meniu de băuturi.",
   keywords: [
     "Mishi Bufet",
     "sushi train",

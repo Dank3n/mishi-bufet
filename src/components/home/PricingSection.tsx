@@ -1,13 +1,28 @@
 "use client";
 
+import { useSyncExternalStore } from "react";
 import { Reveal } from "@/components/ui/Reveal";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { LiveBufet } from "@/components/home/LiveBufet";
-import { pricingTiers } from "@/data/pricing";
+import { isWeekendPricingDay, pricingTiers } from "@/data/pricing";
 import { useLocale } from "@/i18n/LocaleProvider";
+
+function subscribe() {
+  return () => {};
+}
+
+function getWeekendSnapshot() {
+  return isWeekendPricingDay();
+}
 
 export function PricingSection() {
   const { t } = useLocale();
+  const weekendToday = useSyncExternalStore(
+    subscribe,
+    getWeekendSnapshot,
+    getWeekendSnapshot,
+  );
+  const activeTierId = weekendToday ? "weekend" : "weekday";
 
   const tierCopy: Record<
     string,
@@ -68,18 +83,19 @@ export function PricingSection() {
               note: tier.note,
             };
             const price = copy.price ?? tier.price;
+            const highlight = tier.id === activeTierId;
             return (
               <Reveal key={tier.id} delay={0.08 * i}>
                 <div
                   className={`relative h-full border p-5 sm:p-6 md:p-8 transition-all duration-400 active:border-mishi-red/50 hover:-translate-y-1 ${
-                    tier.highlight
+                    highlight
                       ? "border-mishi-red/60 bg-mishi-red/5 red-glow"
                       : "border-line bg-bg-elevated hover:border-mishi-red/35"
                   }`}
                 >
-                  {tier.highlight && (
+                  {highlight && (
                     <span className="absolute top-4 right-4 text-[9px] tracking-[0.25em] uppercase text-mishi-red">
-                      {t.pricing.weekendBadge}
+                      {t.pricing.todayBadge}
                     </span>
                   )}
                   <p className="text-[10px] sm:text-xs tracking-[0.3em] uppercase text-ink-muted">

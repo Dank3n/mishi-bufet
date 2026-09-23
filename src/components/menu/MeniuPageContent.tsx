@@ -2,6 +2,7 @@
 
 import { PageHero } from "@/components/layout/PageHero";
 import { MenuEditorial } from "@/components/menu/MenuEditorial";
+import { MenuOnPlate } from "@/components/menu/MenuOnPlate";
 import { menuCategories } from "@/data/menu";
 import { useLocale } from "@/i18n/LocaleProvider";
 
@@ -35,7 +36,10 @@ export function MeniuPageContent() {
           ))}
         </nav>
       </div>
-      <div className="mx-auto max-w-7xl px-4 sm:px-5 md:px-8 pb-16 sm:pb-24">
+
+      <MenuOnPlate />
+
+      <div className="mx-auto max-w-7xl px-4 sm:px-5 md:px-8 py-16 sm:py-24">
         <MenuEditorial />
       </div>
     </>

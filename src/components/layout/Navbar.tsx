@@ -7,12 +7,12 @@ import { Menu, X } from "lucide-react";
 import { TransitionLink } from "@/components/fx/TransitionLink";
 import { LanguageSwitcher } from "@/components/layout/LanguageSwitcher";
 import { useLocale } from "@/i18n/LocaleProvider";
+import { location } from "@/data/pricing";
 
 const links = [
   { href: "/", key: "home" as const },
   { href: "/meniu", key: "menu" as const },
   { href: "/despre", key: "about" as const },
-  { href: "/rezervari", key: "reserve" as const },
   { href: "/contact", key: "contact" as const },
 ];
 
@@ -84,12 +84,13 @@ export function Navbar() {
             );
           })}
           <LanguageSwitcher />
-          <TransitionLink
-            href="/rezervari"
+          <a
+            href={location.phoneHref}
             className="px-4 py-2 text-xs tracking-[0.2em] uppercase bg-mishi-red text-white red-glow hover:brightness-110 transition"
+            data-magnetic
           >
-            {t.nav.reserveCta}
-          </TransitionLink>
+            {t.contact.call}
+          </a>
         </nav>
 
         <div className="flex lg:hidden items-center gap-2 relative z-[60]">
@@ -145,14 +146,14 @@ export function Navbar() {
                 transition={{ delay: 0.25 }}
                 className="pb-8 pt-4"
               >
-                <TransitionLink
-                  href="/rezervari"
+                <a
+                  href={location.phoneHref}
                   className="flex min-h-14 w-full items-center justify-center bg-mishi-red text-white text-sm tracking-[0.2em] uppercase red-glow"
                 >
-                  {t.nav.reserveCta}
-                </TransitionLink>
+                  {t.contact.call}
+                </a>
                 <p className="mt-4 text-center text-[10px] tracking-[0.3em] uppercase text-ink-muted">
-                  Mega Mall · București
+                  {location.phone}
                 </p>
               </motion.div>
             </nav>

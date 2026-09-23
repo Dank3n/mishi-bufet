@@ -1,10 +1,11 @@
+import { isRomanianLegalHoliday } from "@/data/roLegalHolidays";
+
 export type PricingTier = {
   id: string;
   label: string;
   days: string;
   price: string;
   note: string;
-  highlight?: boolean;
   /** When true, hide the trailing "lei" unit (e.g. Gratis / −35%) */
   hideCurrency?: boolean;
 };
@@ -20,10 +21,9 @@ export const pricingTiers: PricingTier[] = [
   {
     id: "weekend",
     label: "All you can eat",
-    days: "Vineri – Duminică & sărbători",
+    days: "Vineri – Duminică & zile libere",
     price: "94,90",
-    note: "Același acces nelimitat · preț de weekend / sărbătoare",
-    highlight: true,
+    note: "Același acces nelimitat · preț de weekend / zi liberă legală",
   },
   {
     id: "kids-free",
@@ -42,6 +42,20 @@ export const pricingTiers: PricingTier[] = [
     hideCurrency: true,
   },
 ];
+
+/**
+ * Preț weekend AYCE dacă e Vineri–Duminică (Europe/Bucharest)
+ * sau zi liberă legală RO (Codul muncii) — nu 8 martie etc.
+ */
+export function isWeekendPricingDay(now = new Date()): boolean {
+  if (isRomanianLegalHoliday(now)) return true;
+
+  const weekday = new Intl.DateTimeFormat("en-GB", {
+    timeZone: "Europe/Bucharest",
+    weekday: "short",
+  }).format(now);
+  return weekday === "Fri" || weekday === "Sat" || weekday === "Sun";
+}
 
 export const schedule = [
   { day: "Luni – Duminică", hours: "11:30 – 22:00" },

@@ -37,7 +37,7 @@ export function LocaleProvider({ children }: { children: ReactNode }) {
   useEffect(() => {
     if (!ready) return;
     document.documentElement.lang =
-      locale === "zh" ? "zh-CN" : locale === "ja" ? "ja" : locale;
+      locale === "zh" ? "zh-CN" : locale;
     localStorage.setItem(STORAGE_KEY, locale);
   }, [locale, ready]);
 
