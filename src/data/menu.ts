@@ -159,7 +159,7 @@ export const buffetSushi: MenuCategory = {
 export const comboMenu: MenuCategory = {
   id: "combo",
   title: "Alege-ți combo-ul",
-  subtitle: "Garnitură la alegere + fel principal · ~550 g",
+  subtitle: "Doar la pachet · garnitură la alegere + fel principal · ~550 g",
   items: [
     {
       id: "combo-pui",

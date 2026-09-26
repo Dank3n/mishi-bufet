@@ -57,6 +57,7 @@ export function PricingSection() {
     t.pricing.include2,
     t.pricing.include3,
     t.pricing.include4,
+    t.pricing.include5,
   ];
 
   return (

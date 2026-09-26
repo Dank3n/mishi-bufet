@@ -62,7 +62,7 @@ const ro: Dict = {
   hero: {
     location: "București, Mega Mall",
     tagline:
-      "Bufet asiatic & sushi train — farfurii care circulă, arome care rămân. All you can eat: sushi. Combo-uri & băuturi separat.",
+      "Bufet asiatic & sushi train — farfurii care circulă, arome care rămân. All you can eat: sushi + bufet cald. Combo-uri doar la pachet; băuturi separat.",
     reserve: "Contact",
     seeMenu: "Vezi meniul",
     liveBand: "Ce e acum pe bandă",
@@ -79,7 +79,7 @@ const ro: Dict = {
       "* Limită 100 minute. Băuturile nu sunt incluse. Prețul de weekend (94,90 lei) se aplică și în zilele libere legale (ex. 1 mai, Crăciun, Paște ortodox).",
     weekdayLabel: "All you can eat",
     weekdayDays: "Luni – Joi",
-    weekdayNote: "Acces nelimitat la bufet & sushi train",
+    weekdayNote: "Acces nelimitat la sushi train & bufet cald",
     weekendLabel: "All you can eat",
     weekendDays: "Vineri – Duminică & zile libere",
     weekendNote: "Același acces nelimitat · preț de weekend / zi liberă legală",
@@ -96,10 +96,11 @@ const ro: Dict = {
     everyDay: "Luni – Duminică",
     hours: "11:30 – 22:00",
     include1: "Acces nelimitat la sushi train (nigiri & maki)",
-    include2: "Limită 100 de minute la masă",
-    include3: "Băuturile nu sunt incluse — vezi meniul de băuturi",
-    include4:
-      "Combo-urile (pui, vită, rață, fructe de mare) se comandă separat",
+    include2: "Bufet cald la discreție",
+    include3: "Limită 100 de minute la masă",
+    include4: "Băuturile nu sunt incluse — vezi meniul de băuturi",
+    include5:
+      "Combo-urile (pui, vită, rață, fructe de mare) sunt doar la pachet",
   },
   live: {
     closed: "Închis acum",
@@ -124,11 +125,11 @@ const ro: Dict = {
     pageEyebrow: "Meniu digital",
     pageTitle: "Sushi · Combo · Băuturi",
     pageDesc:
-      "All you can eat = doar sushi pe bandă. Combo-urile și băuturile se comandă separat — fără PDF.",
+      "All you can eat = sushi pe bandă + bufet cald la discreție. Combo-urile sunt doar la pachet; băuturile separat.",
     tabSushi: "Sushi AYCE",
     tabCombo: "Combo",
     tabDrinks: "Băuturi",
-    note: "All you can eat = doar sushi pe bandă (100 min). Combo-urile și băuturile se plătesc separat.",
+    note: "All you can eat = sushi pe bandă + bufet cald (100 min). Combo-urile sunt doar la pachet; băuturile se plătesc separat.",
     inBuffet: "pe bandă",
     stackEyebrow: "Meniu · Card Stack",
     stackTitle: "Categorii pe bandă",
@@ -150,11 +151,11 @@ const ro: Dict = {
       sushi: {
         title: "Sushi Train · All you can eat",
         subtitle:
-          "Acces nelimitat la bandă — doar sushi · limită 100 minute · băuturile se plătesc separat",
+          "Acces nelimitat la bandă + bufet cald · limită 100 minute · băuturile separat",
       },
       combo: {
         title: "Alege-ți combo-ul",
-        subtitle: "Garnitură la alegere + fel principal · ~550 g",
+        subtitle: "Doar la pachet · garnitură la alegere + fel principal · ~550 g",
       },
       bauturi: {
         title: "Băuturi",
@@ -460,8 +461,8 @@ const ro: Dict = {
     nav: "Navigare",
     location: "Locație",
     rights: "Toate drepturile rezervate.",
+    anpcSol: "Soluționarea Online a Litigiilor — SOL",
     anpcSal: "Soluționarea Alternativă a Litigiilor — ANPC SAL",
-    anpcPlacheta: "Placheta ANPC — protecția consumatorilor",
   },
   about: {
     eyebrow: "Despre / Atmosferă",
@@ -471,7 +472,7 @@ const ro: Dict = {
     s1: "Izakaya modern",
     s1t: "Lumină joasă, neon sângeriu, zgomot blând de farfurii pe bandă. Ritualul sushi train, în București, în Mega Mall.",
     s2: "Sushi + combo",
-    s2t: "All you can eat pe bandă înseamnă sushi. Dacă vrei pui, vită, rață sau fructe de mare — alegi un combo separat, cu garnitură la alegere.",
+    s2t: "All you can eat = sushi pe bandă + bufet cald la discreție. Combo-urile (pui, vită, rață, fructe de mare) sunt doar la pachet.",
     s3: "În Mega Mall",
     s3t: "Ușor de ajuns, parcare în complex, masă pentru prieteni sau cină pe bandă. Atmosfera rămâne aceeași: neo-noir, caldă, dinamică.",
     gallery: "Galerie atmosferă",
@@ -542,7 +543,7 @@ const en: Dict = {
   hero: {
     location: "Bucharest, Mega Mall",
     tagline:
-      "Asian buffet & sushi train — plates that move, flavours that stay. All you can eat: sushi. Combos & drinks separately.",
+      "Asian buffet & sushi train — plates that move, flavours that stay. All you can eat: sushi + hot buffet. Combos takeaway only; drinks separately.",
     reserve: "Contact",
     seeMenu: "See the menu",
     liveBand: "What's on the belt now",
@@ -559,7 +560,7 @@ const en: Dict = {
     footnote:
       "* 100-minute limit. Drinks not included. Weekend price (94.90 lei) also applies on Romanian public holidays (e.g. May 1, Christmas, Orthodox Easter).",
     weekdayDays: "Mon – Thu",
-    weekdayNote: "Unlimited buffet & sushi train access",
+    weekdayNote: "Unlimited sushi train & hot buffet",
     weekendDays: "Fri – Sun & public holidays",
     weekendNote: "Same unlimited access · weekend / public holiday price",
     todayBadge: "Today",
@@ -572,9 +573,11 @@ const en: Dict = {
     kidsDiscNote: "35% off the day’s price (weekday or weekend)",
     everyDay: "Mon – Sun",
     include1: "Unlimited sushi train access (nigiri & maki)",
-    include2: "100-minute table limit",
-    include3: "Drinks not included — see the drinks menu",
-    include4: "Combos (chicken, beef, duck, seafood) ordered separately",
+    include2: "Hot buffet at your discretion",
+    include3: "100-minute table limit",
+    include4: "Drinks not included — see the drinks menu",
+    include5:
+      "Combos (chicken, beef, duck, seafood) are takeaway only",
   },
   live: {
     closed: "Closed now",
@@ -600,11 +603,11 @@ const en: Dict = {
     pageEyebrow: "Digital menu",
     pageTitle: "Sushi · Combo · Drinks",
     pageDesc:
-      "All you can eat = sushi on the belt only. Combos and drinks ordered separately — no PDF.",
+      "All you can eat = sushi on the belt + hot buffet. Combos are takeaway only; drinks sold separately.",
     tabSushi: "Sushi AYCE",
     tabCombo: "Combo",
     tabDrinks: "Drinks",
-    note: "All you can eat = sushi only (100 min). Combos and drinks are charged separately.",
+    note: "All you can eat = sushi on the belt + hot buffet (100 min). Combos are takeaway only; drinks charged separately.",
     inBuffet: "on the belt",
     stackEyebrow: "Menu · Card Stack",
     stackTitle: "Categories on the belt",
@@ -626,11 +629,11 @@ const en: Dict = {
       sushi: {
         title: "Sushi Train · All you can eat",
         subtitle:
-          "Unlimited belt access — sushi only · 100-minute limit · drinks sold separately",
+          "Unlimited belt + hot buffet · 100-minute limit · drinks sold separately",
       },
       combo: {
         title: "Choose your combo",
-        subtitle: "Any side + main · ~550 g",
+        subtitle: "Takeaway only · any side + main · ~550 g",
       },
       bauturi: {
         title: "Drinks",
@@ -915,8 +918,8 @@ const en: Dict = {
     nav: "Navigate",
     location: "Location",
     rights: "All rights reserved.",
+    anpcSol: "Online Dispute Resolution — SOL",
     anpcSal: "Alternative Dispute Resolution — ANPC SAL",
-    anpcPlacheta: "ANPC plaque — consumer protection",
   },
   about: {
     eyebrow: "About / Atmosphere",
@@ -925,7 +928,7 @@ const en: Dict = {
     s1: "Modern izakaya",
     s1t: "Low light, crimson neon, soft clatter of plates on the belt. Sushi-train ritual in Bucharest, inside Mega Mall.",
     s2: "Sushi + combo",
-    s2t: "All you can eat on the belt means sushi. For chicken, beef, duck or seafood — order a separate combo with any side.",
+    s2t: "All you can eat = sushi on the belt + hot buffet. Combos (chicken, beef, duck, seafood) are takeaway only.",
     s3: "Inside Mega Mall",
     s3t: "Easy to reach, parking in the complex, table for friends or a quick belt dinner. Same neo-noir atmosphere.",
     gallery: "Atmosphere gallery",
@@ -1012,7 +1015,7 @@ const ru: Dict = {
     footnote:
       "* Лимит 100 минут. Напитки не входят. Цена выходного (94,90 лей) действует и в официальные выходные (1 мая, Рождество, православная Пасха и т.д.).",
     weekdayDays: "Пн – Чт",
-    weekdayNote: "Безлимитный суши-поезд",
+    weekdayNote: "Безлимитный суши-поезд и горячий буфет",
     weekendDays: "Пт – Вс и офиц. выходные",
     weekendNote: "Тот же безлимит · цена выходного / официального праздника",
     todayBadge: "Сегодня",
@@ -1025,9 +1028,11 @@ const ru: Dict = {
     kidsDiscNote: "−35% от цены дня",
     everyDay: "Пн – Вс",
     include1: "Безлимитный суши-поезд (нигири и маки)",
-    include2: "Лимит 100 минут за столом",
-    include3: "Напитки не входят — см. меню напитков",
-    include4: "Комбо (курица, говядина, утка, морепродукты) заказываются отдельно",
+    include2: "Горячий буфет по желанию",
+    include3: "Лимит 100 минут за столом",
+    include4: "Напитки не входят — см. меню напитков",
+    include5:
+      "Комбо (курица, говядина, утка, морепродукты) только на вынос",
   },
   live: {
     closed: "Сейчас закрыто",
@@ -1053,11 +1058,11 @@ const ru: Dict = {
     pageEyebrow: "Цифровое меню",
     pageTitle: "Суши · Комбо · Напитки",
     pageDesc:
-      "Безлимит — только суши на ленте. Комбо и напитки отдельно.",
+      "Безлимит — суши на ленте + горячий буфет. Комбо только на вынос; напитки отдельно.",
     tabSushi: "Суши безлимит",
     tabCombo: "Комбо",
     tabDrinks: "Напитки",
-    note: "Безлимит = только суши (100 мин). Комбо и напитки отдельно.",
+    note: "Безлимит = суши на ленте + горячий буфет (100 мин). Комбо только на вынос; напитки отдельно.",
     inBuffet: "на ленте",
     stackEyebrow: "Меню · Карточки",
     stackTitle: "Категории",
@@ -1077,11 +1082,12 @@ const ru: Dict = {
     cats: {
       sushi: {
         title: "Суши-поезд · Безлимит",
-        subtitle: "Безлимит на ленте — только суши · 100 мин · напитки отдельно",
+        subtitle:
+          "Безлимит на ленте + горячий буфет · 100 мин · напитки отдельно",
       },
       combo: {
         title: "Выберите комбо",
-        subtitle: "Гарнир на выбор + основное · ~550 г",
+        subtitle: "Только на вынос · гарнир на выбор + основное · ~550 г",
       },
       bauturi: {
         title: "Напитки",
@@ -1191,8 +1197,8 @@ const ru: Dict = {
     nav: "Навигация",
     location: "Локация",
     rights: "Все права защищены.",
+    anpcSol: "Онлайн-урегулирование споров — SOL",
     anpcSal: "Альтернативное урегулирование споров — ANPC SAL",
-    anpcPlacheta: "Плакетка ANPC — защита потребителей",
   },
   about: {
     eyebrow: "О нас / Атмосфера",
@@ -1201,7 +1207,7 @@ const ru: Dict = {
     s1: "Современная идзакая",
     s1t: "Приглушённый свет, алый неон, мягкий стук тарелок на ленте. Ритуал суши-поезда в Бухаресте, в Mega Mall.",
     s2: "Суши + комбо",
-    s2t: "Безлимит на ленте — это суши. Курица, говядина, утка или морепродукты — отдельное комбо с гарниром на выбор.",
+    s2t: "Безлимит = суши на ленте + горячий буфет. Комбо (курица, говядина, утка, морепродукты) только на вынос.",
     s3: "В Mega Mall",
     s3t: "Удобный доступ, парковка в комплексе, стол для друзей или ужин у ленты. Та же neo-noir атмосфера.",
     gallery: "Галерея атмосферы",
@@ -1286,7 +1292,7 @@ const zh: Dict = {
     footnote:
       "* 限时100分钟。饮品另计。周末价（94.90列伊）亦适用于罗马尼亚法定假日（如五一、圣诞、东正教复活节）。",
     weekdayDays: "周一至周四",
-    weekdayNote: "寿司传送带畅吃",
+    weekdayNote: "寿司传送带与热菜自助畅吃",
     weekendDays: "周五至周日及法定假日",
     weekendNote: "同样畅吃 · 周末/法定假日价格",
     todayBadge: "今日",
@@ -1299,9 +1305,10 @@ const zh: Dict = {
     kidsDiscNote: "按当日价格优惠35%",
     everyDay: "周一至周日",
     include1: "寿司传送带畅吃（握寿司、卷寿司）",
-    include2: "限时100分钟",
-    include3: "饮品另计 — 见饮品菜单",
-    include4: "套餐（鸡、牛、鸭、海鲜）需另点",
+    include2: "热菜自助随意取用",
+    include3: "限时100分钟",
+    include4: "饮品另计 — 见饮品菜单",
+    include5: "套餐（鸡、牛、鸭、海鲜）仅限外带",
   },
   live: {
     closed: "现已打烊",
@@ -1326,11 +1333,11 @@ const zh: Dict = {
     ...en.menu,
     pageEyebrow: "数字菜单",
     pageTitle: "寿司 · 套餐 · 饮品",
-    pageDesc: "自助仅含传送带寿司。套餐与饮品另点。",
+    pageDesc: "自助含传送带寿司与热菜。套餐仅限外带；饮品另计。",
     tabSushi: "寿司自助",
     tabCombo: "套餐",
     tabDrinks: "饮品",
-    note: "自助仅含寿司（100分钟）。套餐与饮品另计。",
+    note: "自助含寿司与热菜（100分钟）。套餐仅限外带；饮品另计。",
     inBuffet: "传送带上",
     stackEyebrow: "菜单 · 卡片",
     stackTitle: "分类",
@@ -1350,11 +1357,11 @@ const zh: Dict = {
     cats: {
       sushi: {
         title: "寿司传送带 · 自助",
-        subtitle: "畅吃传送带 — 仅寿司 · 限时100分钟 · 饮品另计",
+        subtitle: "畅吃传送带 + 热菜 · 限时100分钟 · 饮品另计",
       },
       combo: {
         title: "选择套餐",
-        subtitle: "任意配菜 + 主菜 · 约550克",
+        subtitle: "仅限外带 · 任意配菜 + 主菜 · 约550克",
       },
       bauturi: {
         title: "饮品",
@@ -1466,8 +1473,8 @@ const zh: Dict = {
     nav: "导航",
     location: "位置",
     rights: "版权所有。",
+    anpcSol: "在线争议解决 — SOL",
     anpcSal: "替代性争议解决 — ANPC SAL",
-    anpcPlacheta: "ANPC标识 — 消费者保护",
   },
   about: {
     eyebrow: "关于 / 氛围",
@@ -1476,7 +1483,7 @@ const zh: Dict = {
     s1: "现代居酒屋",
     s1t: "低光、猩红霓虹、传送带盘碟轻响。布加勒斯特 Mega Mall内的寿司传送带仪式。",
     s2: "寿司 + 套餐",
-    s2t: "传送带自助是寿司。鸡、牛、鸭、海鲜请点独立套餐。",
+    s2t: "自助含传送带寿司与热菜。套餐（鸡、牛、鸭、海鲜）仅限外带。",
     s3: "Mega Mall内",
     s3t: "交通便利，园区停车。同样的 neo-noir 氛围。",
     gallery: "氛围图集",

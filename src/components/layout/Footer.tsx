@@ -12,8 +12,9 @@ const links = [
   { href: "/contact", key: "contact" as const },
 ];
 
-const ANPC_SAL_URL = "https://reclamatiisal.anpc.ro";
-const ANPC_HOME_URL = "https://anpc.ro";
+const ANPC_SOL_URL =
+  "https://ec.europa.eu/consumers/odr/main/index.cfm?event=main.home2.show&lng=RO";
+const ANPC_SAL_URL = "https://anpc.ro/ce-este-sal/";
 
 export function Footer() {
   const { t } = useLocale();
@@ -62,35 +63,35 @@ export function Footer() {
         <div className="editorial-rule my-10" />
 
         <div className="flex flex-col items-start justify-between gap-6 md:flex-row md:items-center">
-          <div className="flex flex-wrap items-center gap-4 sm:gap-5">
+          <div className="flex flex-wrap items-center gap-3 sm:gap-4">
+            <a
+              href={ANPC_SOL_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block opacity-95 transition-opacity hover:opacity-100"
+              aria-label={t.footer.anpcSol}
+            >
+              <Image
+                src="/images/anpc/sol.png"
+                alt={t.footer.anpcSol}
+                width={396}
+                height={104}
+                className="h-11 w-auto sm:h-12"
+              />
+            </a>
             <a
               href={ANPC_SAL_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="block opacity-90 transition-opacity hover:opacity-100"
+              className="block opacity-95 transition-opacity hover:opacity-100"
               aria-label={t.footer.anpcSal}
             >
               <Image
-                src="/images/anpc/pictograma-sal.png"
+                src="/images/anpc/sal.png"
                 alt={t.footer.anpcSal}
-                width={250}
-                height={50}
-                className="h-10 w-auto sm:h-[50px]"
-              />
-            </a>
-            <a
-              href={ANPC_HOME_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="block opacity-90 transition-opacity hover:opacity-100"
-              aria-label={t.footer.anpcPlacheta}
-            >
-              <Image
-                src="/images/anpc/placheta-sal.png"
-                alt={t.footer.anpcPlacheta}
-                width={120}
-                height={147}
-                className="h-20 w-auto sm:h-24"
+                width={381}
+                height={104}
+                className="h-11 w-auto sm:h-12"
               />
             </a>
           </div>
