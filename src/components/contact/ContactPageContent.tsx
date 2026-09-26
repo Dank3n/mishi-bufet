@@ -6,7 +6,7 @@ import { Reveal } from "@/components/ui/Reveal";
 import { Button } from "@/components/ui/Button";
 import { DetaliiGallery } from "@/components/ui/DetaliiGallery";
 import { location } from "@/data/pricing";
-import { MapPin, Phone, Mail, Clock } from "lucide-react";
+import { MapPin, Phone, Clock } from "lucide-react";
 import { useLocale } from "@/i18n/LocaleProvider";
 
 export function ContactPageContent() {
@@ -40,13 +40,6 @@ export function ContactPageContent() {
               />
             </Reveal>
             <Reveal delay={0.12}>
-              <InfoRow
-                icon={<Mail className="text-mishi-red" size={20} />}
-                label={t.contact.email}
-                value={location.email}
-              />
-            </Reveal>
-            <Reveal delay={0.16}>
               <div className="border border-line p-6">
                 <div className="mb-4 flex items-center gap-3">
                   <Clock className="text-mishi-red" size={20} />
@@ -65,7 +58,7 @@ export function ContactPageContent() {
               </div>
             </Reveal>
 
-            <Reveal delay={0.2}>
+            <Reveal delay={0.16}>
               <div className="border border-mishi-red/35 bg-mishi-red/5 p-6">
                 <p className="mb-2 text-[10px] tracking-[0.3em] text-mishi-red uppercase">
                   {t.contact.reserveTitle}
@@ -76,7 +69,7 @@ export function ContactPageContent() {
               </div>
             </Reveal>
 
-            <Reveal delay={0.24}>
+            <Reveal delay={0.2}>
               <div className="flex flex-wrap gap-4">
                 <Button href={location.phoneHref}>{t.contact.call}</Button>
               </div>

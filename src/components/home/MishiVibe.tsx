@@ -1,6 +1,6 @@
 "use client";
 
-import Image from "next/image";
+import { PhotoImage } from "@/components/ui/PhotoImage";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import { Reveal } from "@/components/ui/Reveal";
@@ -48,13 +48,14 @@ export function MishiVibe() {
               }
             >
               <article className="group relative aspect-[4/5] sm:aspect-[5/4] lg:aspect-[4/5] overflow-hidden border border-line bg-bg-elevated">
-                <Image
+                <PhotoImage
                   src={shot.src}
                   alt={`${shot.title} — Mishi Bufet`}
                   fill
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                   className="object-cover transition-transform duration-700 group-hover:scale-[1.04]"
                   priority={i < 2}
+                  quality={90}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-bg-deep via-bg-deep/55 to-transparent opacity-90 group-hover:opacity-95 transition-opacity" />
                 <span className="absolute right-4 top-4 font-display text-6xl text-white/10 group-hover:text-mishi-red/25 transition-colors">

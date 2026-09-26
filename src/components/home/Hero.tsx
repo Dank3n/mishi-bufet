@@ -83,31 +83,43 @@ export function Hero() {
 
           <motion.div
             style={reduce ? undefined : { opacity: textOpacity, y: textY }}
-            className="absolute inset-x-0 top-0 z-20 pt-[max(5.5rem,calc(env(safe-area-inset-top)+4.5rem))] lg:pt-32"
+            className="absolute inset-0 z-20 flex flex-col"
           >
-            <div className="mx-auto w-full max-w-7xl px-4 sm:px-5 lg:px-8">
-              <p className="mb-3 text-[10px] tracking-[0.35em] text-mishi-red uppercase sm:mb-4 sm:text-xs">
-                {t.hero.location}
-              </p>
-              <h1 className="font-display text-[clamp(2.75rem,14vw,7.5rem)] leading-[0.9] tracking-tight text-ink">
-                Mishi
-                <span className="block text-mishi-red">Bufet</span>
-              </h1>
-              <p className="mt-3 max-w-md text-sm font-light leading-relaxed text-ink-muted sm:mt-5 sm:text-base lg:text-lg">
-                {t.hero.tagline}
-              </p>
+            <div className="mx-auto flex h-full w-full max-w-7xl flex-col px-4 sm:px-5 lg:px-8">
+              {/* Brand — mobile: mid-screen, flush left; desktop: top */}
+              <div className="flex flex-1 flex-col justify-center pt-[max(4.5rem,env(safe-area-inset-top))] lg:flex-none lg:justify-start lg:pt-32">
+                <p className="mb-3 text-[10px] tracking-[0.35em] text-mishi-red uppercase sm:mb-4 sm:text-xs">
+                  {t.hero.location}
+                </p>
+                <h1 className="font-display text-[clamp(2.75rem,14vw,7.5rem)] leading-[0.9] tracking-tight text-ink">
+                  Mishi
+                  <span className="block text-mishi-red">Bufet</span>
+                </h1>
+                <p className="mt-3 max-w-md text-sm font-light leading-relaxed text-ink-muted sm:mt-5 sm:text-base lg:text-lg">
+                  {t.hero.tagline}
+                </p>
 
-              <div className="mt-6 flex flex-col flex-wrap gap-3 sm:mt-8 lg:flex-row lg:gap-4">
+                {/* Desktop CTAs under copy */}
+                <div className="mt-8 hidden flex-row gap-4 lg:flex">
+                  <Button href={location.phoneHref}>{t.contact.call}</Button>
+                  <Button href="/meniu" variant="ghost">
+                    {t.hero.seeMenu}
+                  </Button>
+                </div>
+              </div>
+
+              {/* Mobile CTAs — pinned bottom, centered */}
+              <div className="flex w-full flex-col items-center gap-3 pb-[max(1.25rem,env(safe-area-inset-bottom))] pt-4 lg:hidden">
                 <Button
                   href={location.phoneHref}
-                  className="min-h-12 w-full lg:w-auto"
+                  className="min-h-12 w-full max-w-xs"
                 >
                   {t.contact.call}
                 </Button>
                 <Button
                   href="/meniu"
                   variant="ghost"
-                  className="min-h-12 w-full lg:w-auto"
+                  className="min-h-12 w-full max-w-xs"
                 >
                   {t.hero.seeMenu}
                 </Button>

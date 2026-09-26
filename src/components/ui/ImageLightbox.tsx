@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useEffect, useCallback } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { X, ChevronLeft, ChevronRight } from "lucide-react";
+import { useBodyScrollLock } from "@/hooks/useBodyScrollLock";
 
 export type LightboxItem = {
   src: string;
@@ -20,8 +21,10 @@ type Props = {
 };
 
 export function ImageLightbox({ items, index, onClose, onChange }: Props) {
-  const open = index !== null && items[index];
-  const current = open ? items[index] : null;
+  const open = index !== null && Boolean(items[index]);
+  const current = open && index !== null ? items[index] : null;
+
+  useBodyScrollLock(open);
 
   const go = useCallback(
     (dir: -1 | 1) => {
@@ -34,18 +37,13 @@ export function ImageLightbox({ items, index, onClose, onChange }: Props) {
 
   useEffect(() => {
     if (!open) return;
-    const prev = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
     const onKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") onClose();
       if (e.key === "ArrowLeft") go(-1);
       if (e.key === "ArrowRight") go(1);
     };
     window.addEventListener("keydown", onKey);
-    return () => {
-      document.body.style.overflow = prev;
-      window.removeEventListener("keydown", onKey);
-    };
+    return () => window.removeEventListener("keydown", onKey);
   }, [open, onClose, go]);
 
   return (
@@ -108,6 +106,7 @@ export function ImageLightbox({ items, index, onClose, onChange }: Props) {
             onClick={(e) => e.stopPropagation()}
           >
             <div className="relative h-[min(78vh,820px)] w-full">
+              {/* Original file — no re-encode (sources are already compressed) */}
               <Image
                 src={current.src}
                 alt={current.alt}
@@ -115,6 +114,7 @@ export function ImageLightbox({ items, index, onClose, onChange }: Props) {
                 sizes="100vw"
                 className="object-contain"
                 priority
+                unoptimized
               />
             </div>
             {(current.title || current.caption) && (

@@ -1,6 +1,6 @@
 "use client";
 
-import Image from "next/image";
+import { PhotoImage } from "@/components/ui/PhotoImage";
 import { useMemo, useState } from "react";
 import { Reveal } from "@/components/ui/Reveal";
 import { ImageLightbox, type LightboxItem } from "@/components/ui/ImageLightbox";
@@ -71,12 +71,13 @@ export function DetaliiGallery({ className = "" }: Props) {
                 onClick={() => setLightboxIndex(i)}
                 className="group relative h-full w-full overflow-hidden border border-line text-left"
               >
-                <Image
+                <PhotoImage
                   src={shot.src}
                   alt={shot.alt}
                   fill
                   sizes="(max-width: 768px) 100vw, 50vw"
                   className="object-cover transition-transform duration-700 group-hover:scale-[1.04]"
+                  quality={90}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-bg-deep/85 via-transparent to-transparent" />
                 <div className="absolute inset-x-0 bottom-0 p-3 md:p-5">

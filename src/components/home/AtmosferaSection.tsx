@@ -1,6 +1,6 @@
 "use client";
 
-import Image from "next/image";
+import { PhotoImage } from "@/components/ui/PhotoImage";
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { Reveal } from "@/components/ui/Reveal";
@@ -83,7 +83,7 @@ export function AtmosferaSection() {
                     }}
                     style={{ flexBasis: 0 }}
                   >
-                    <Image
+                    <PhotoImage
                       src={shot.src}
                       alt={shot.alt}
                       fill
@@ -92,6 +92,7 @@ export function AtmosferaSection() {
                         isActive ? "scale-105" : "scale-100"
                       }`}
                       priority={i === 0}
+                      quality={90}
                     />
                     <div
                       className={`absolute inset-0 transition-colors duration-500 ${
@@ -135,13 +136,14 @@ export function AtmosferaSection() {
                         isActive ? "border-mishi-red" : "border-transparent"
                       }`}
                     >
-                      <Image
+                      <PhotoImage
                         src={shot.src}
                         alt={shot.alt}
                         fill
-                        sizes="75vw"
+                        sizes="90vw"
                         className="object-cover"
                         priority={i === 0}
+                        quality={90}
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
                       <span className="absolute bottom-4 left-4 rounded-sm bg-mishi-red px-3 py-1 text-[10px] font-bold tracking-[0.22em] text-white uppercase">

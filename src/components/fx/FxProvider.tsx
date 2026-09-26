@@ -31,14 +31,23 @@ export function FxProvider({ children }: { children: ReactNode }) {
   const [pendingNav, setPendingNav] = useState<(() => void) | null>(null);
 
   useEffect(() => {
-    const seen = sessionStorage.getItem("mishi-loaded");
+    let seen = false;
+    try {
+      seen = sessionStorage.getItem("mishi-loaded") === "1";
+    } catch {
+      /* private mode */
+    }
     if (seen) {
       setLoading(false);
       return;
     }
     const t = setTimeout(() => {
       setLoading(false);
-      sessionStorage.setItem("mishi-loaded", "1");
+      try {
+        sessionStorage.setItem("mishi-loaded", "1");
+      } catch {
+        /* private mode */
+      }
     }, window.matchMedia("(max-width: 1023px)").matches ? 1400 : 2200);
     return () => clearTimeout(t);
   }, []);
@@ -109,8 +118,9 @@ export function FxProvider({ children }: { children: ReactNode }) {
 function LoadingOverlay() {
   return (
     <motion.div
-      className="fixed inset-0 z-[100] flex items-center justify-center bg-bg-deep"
+      className="pointer-events-none fixed inset-0 z-[100] flex items-center justify-center bg-bg-deep"
       initial={{ opacity: 1 }}
+      animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.45 }}
     >

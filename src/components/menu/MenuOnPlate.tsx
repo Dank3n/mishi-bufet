@@ -1,9 +1,9 @@
 "use client";
 
-import Image from "next/image";
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Reveal } from "@/components/ui/Reveal";
+import { PhotoImage } from "@/components/ui/PhotoImage";
 import { ImageLightbox, type LightboxItem } from "@/components/ui/ImageLightbox";
 import { menuCloseups } from "@/data/menuCloseups";
 import { useLocale } from "@/i18n/LocaleProvider";
@@ -17,6 +17,7 @@ export function MenuOnPlate() {
   const [active, setActive] = useState(0);
   const [lightbox, setLightbox] = useState<number | null>(null);
   const pauseRef = useRef(false);
+  const closeLightbox = useCallback(() => setLightbox(null), []);
 
   const labels = {
     belt: t.menu.closeupBelt,
@@ -33,16 +34,16 @@ export function MenuOnPlate() {
 
   useEffect(() => {
     const id = window.setInterval(() => {
-      if (pauseRef.current) return;
+      if (pauseRef.current || lightbox !== null) return;
       setActive((i) => (i + 1) % menuCloseups.length);
     }, 3200);
     return () => window.clearInterval(id);
-  }, []);
+  }, [lightbox]);
 
   return (
     <section
       id="pe-farfurie"
-      className="relative overflow-hidden border-y border-line py-16 sm:py-20 md:py-24"
+      className="relative overflow-x-clip border-y border-line py-16 sm:py-20 md:py-24"
       onMouseEnter={() => {
         pauseRef.current = true;
       }}
@@ -95,7 +96,7 @@ export function MenuOnPlate() {
             aria-hidden
           />
 
-          <div className="scrollbar-none relative flex snap-x snap-mandatory gap-4 overflow-x-auto px-1 pb-4 pt-2 sm:gap-6 md:justify-center md:overflow-visible md:px-0">
+          <div className="scrollbar-none relative flex snap-x snap-mandatory gap-4 overflow-x-auto overscroll-x-contain px-1 pb-10 pt-6 sm:gap-6 md:justify-center md:overflow-visible md:px-0">
             {menuCloseups.map((shot, i) => {
               const isActive = active === i;
               return (
@@ -113,29 +114,31 @@ export function MenuOnPlate() {
                   >
                     <motion.div
                       animate={{
-                        scale: isActive ? 1.06 : 0.92,
-                        y: isActive ? -12 : 8,
+                        y: isActive ? -10 : 6,
                       }}
                       transition={{ type: "spring", stiffness: 260, damping: 22 }}
                       className="relative"
                     >
-                      {/* Plate rim */}
+                      {/* Plate rim — size stays put so the full oval stays visible */}
                       <div
-                        className={`relative aspect-[3/4] w-[min(72vw,240px)] overflow-hidden rounded-[42%] border-[3px] transition-colors duration-500 sm:w-[220px] md:w-[240px] ${
+                        className={`relative aspect-[3/4] w-[min(72vw,240px)] overflow-hidden rounded-[42%] border-[3px] transition-[border-color,box-shadow] duration-500 sm:w-[220px] md:w-[240px] ${
                           isActive
                             ? "border-mishi-red shadow-[0_0_0_1px_rgba(255,30,30,0.35),0_20px_50px_rgba(255,30,30,0.25)]"
                             : "border-white/15 shadow-[0_16px_40px_rgba(0,0,0,0.55)]"
                         }`}
                       >
-                        <Image
+                        <PhotoImage
                           src={shot.src}
                           alt={shot.alt}
                           fill
-                          sizes="240px"
-                          className={`object-cover transition-transform duration-700 ${
-                            isActive ? "scale-105" : "scale-100 group-hover:scale-[1.03]"
+                          sizes="(max-width: 768px) 72vw, 240px"
+                          className={`object-cover transition-transform duration-700 will-change-transform ${
+                            isActive
+                              ? "scale-[1.12]"
+                              : "scale-100 group-hover:scale-[1.05]"
                           }`}
                           priority={i === 0}
+                          quality={90}
                         />
                         <div
                           className={`absolute inset-0 transition-colors duration-500 ${
@@ -194,7 +197,7 @@ export function MenuOnPlate() {
       <ImageLightbox
         items={lightboxItems}
         index={lightbox}
-        onClose={() => setLightbox(null)}
+        onClose={closeLightbox}
         onChange={setLightbox}
       />
     </section>

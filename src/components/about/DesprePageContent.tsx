@@ -1,9 +1,9 @@
 "use client";
 
-import Image from "next/image";
 import { useMemo, useState } from "react";
 import { PageHero } from "@/components/layout/PageHero";
 import { Reveal } from "@/components/ui/Reveal";
+import { PhotoImage } from "@/components/ui/PhotoImage";
 import { ImageLightbox, type LightboxItem } from "@/components/ui/ImageLightbox";
 import {
   vibeFeatured,
@@ -16,6 +16,7 @@ import { Button } from "@/components/ui/Button";
 import { useLocale } from "@/i18n/LocaleProvider";
 import { location } from "@/data/pricing";
 import { DetaliiGallery } from "@/components/ui/DetaliiGallery";
+import { SushiGallery } from "@/components/ui/SushiGallery";
 
 /** Landscape tiles: 1 col on phone, 2 on desktop; last odd item spans full width */
 function tileClass(index: number, total: number) {
@@ -89,13 +90,14 @@ export function DesprePageContent() {
                 onClick={() => openShot(shot)}
                 className="group relative block h-full w-full overflow-hidden border border-line text-left"
               >
-                <Image
+                <PhotoImage
                   src={shot.src}
                   alt={`${shot.title} — Mishi Bufet`}
                   fill
                   sizes="(max-width: 768px) 100vw, 50vw"
                   className="object-cover transition-transform duration-700 group-hover:scale-[1.04]"
                   priority={i < 4}
+                  quality={90}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-bg-deep/85 via-transparent to-transparent" />
                 <p className="absolute bottom-3 left-3 right-3 font-display text-lg text-ink sm:text-xl">
@@ -116,12 +118,13 @@ export function DesprePageContent() {
                 onClick={() => openShot(block.shot)}
                 className="relative mb-5 block aspect-[16/11] w-full overflow-hidden border border-line"
               >
-                <Image
+                <PhotoImage
                   src={block.shot.src}
                   alt={block.shot.title}
                   fill
                   sizes="(max-width: 1024px) 100vw, 33vw"
                   className="object-cover transition-transform duration-700 hover:scale-[1.03]"
+                  quality={90}
                 />
               </button>
               <p className="mb-3 text-xs tracking-[0.3em] text-mishi-red uppercase">
@@ -174,12 +177,13 @@ export function DesprePageContent() {
                           onClick={() => openShot(shot)}
                           className="group relative h-full w-full overflow-hidden border border-line text-left"
                         >
-                          <Image
+                          <PhotoImage
                             src={shot.src}
                             alt={`${shot.title} — Mishi Bufet`}
                             fill
                             sizes="(max-width: 768px) 100vw, 50vw"
                             className="object-cover transition-transform duration-700 group-hover:scale-[1.04]"
+                            quality={90}
                           />
                           <div className="absolute inset-0 bg-gradient-to-t from-bg-deep/80 via-bg-deep/10 to-transparent opacity-90 transition-opacity group-hover:opacity-100" />
                           <span className="absolute top-3 right-3 font-display text-5xl text-white/[0.08] md:text-6xl">
@@ -208,6 +212,7 @@ export function DesprePageContent() {
         </div>
       </section>
 
+      <SushiGallery />
       <DetaliiGallery />
 
       <ImageLightbox

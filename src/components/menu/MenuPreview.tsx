@@ -48,7 +48,7 @@ export function MenuPreview() {
                         </p>
                       </div>
                       <span className="menu-price font-display text-lg text-ink-muted shrink-0 transition-all">
-                        în bufet
+                        pe bandă
                       </span>
                     </li>
                   ))}

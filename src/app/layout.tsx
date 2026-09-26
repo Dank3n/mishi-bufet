@@ -49,8 +49,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="ro" className={`${display.variable} ${body.variable} h-full`}>
-      <body className="min-h-full flex flex-col font-body antialiased bg-bg-deep text-ink">
+    <html lang="ro" className={`${display.variable} ${body.variable} min-h-dvh`}>
+      <body className="min-h-dvh flex flex-col font-body antialiased bg-bg-deep text-ink">
         <ClientShell>
           <div className="noise-overlay" aria-hidden />
           <Navbar />

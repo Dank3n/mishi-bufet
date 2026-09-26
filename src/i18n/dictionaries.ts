@@ -35,6 +35,7 @@ type Dict = {
   vibe: Record<string, string>;
   atmosfera: Record<string, string>;
   detalii: Record<string, string>;
+  sushi: Record<string, string>;
   cta: Record<string, string>;
   footer: Record<string, string>;
   about: Record<string, string>;
@@ -128,7 +129,7 @@ const ro: Dict = {
     tabCombo: "Combo",
     tabDrinks: "Băuturi",
     note: "All you can eat = doar sushi pe bandă (100 min). Combo-urile și băuturile se plătesc separat.",
-    inBuffet: "în bufet",
+    inBuffet: "pe bandă",
     stackEyebrow: "Meniu · Card Stack",
     stackTitle: "Categorii pe bandă",
     stackHintTouch: "Swipe pe carduri pentru următoarea categorie.",
@@ -161,44 +162,114 @@ const ro: Dict = {
       },
     },
     items: {
-      "california-roll": {
-        name: "California Roll",
-        description: "Uramaki cu surimi, avocado și icre pe orez",
+      california: {
+        name: "California",
+        description: "Uramaki clasic pe bandă",
+        tag: "Train",
+      },
+      filadelfia: {
+        name: "Filadelfia",
+        description: "Somon, cremă de brânză și castravete",
+        tag: "Train",
+      },
+      "maki-salmon": {
+        name: "Maki somon",
+        description: "Maki cu somon, nori la exterior",
+        tag: "Train",
+      },
+      "maki-tuna": {
+        name: "Maki ton",
+        description: "Maki cu ton, nori la exterior",
+        tag: "Train",
+      },
+      "maki-shrimp": {
+        name: "Maki creveți",
+        description: "Maki cu creveți, nori la exterior",
+        tag: "Train",
+      },
+      "maki-avocado": {
+        name: "Maki avocado",
+        description: "Maki cu avocado, nori la exterior",
+        tag: "Train",
+      },
+      "maki-cucumber": {
+        name: "Maki castravete",
+        description: "Maki cu castravete, nori la exterior",
+        tag: "Train",
+      },
+      vegetarian: {
+        name: "Vegetariene",
+        description: "Role vegetariene pe bandă",
+        tag: "Train",
+      },
+      "salmon-cover": {
+        name: "Somon cover",
+        description: "Roll acoperit cu somon",
+        tag: "Train",
+      },
+      "mango-cover": {
+        name: "Mango cover",
+        description: "Roll acoperit cu mango",
+        tag: "Train",
+      },
+      "tobiko-cover": {
+        name: "Tobiko cover",
+        description: "Roll acoperit cu tobiko",
+        tag: "Train",
+      },
+      "eel-nigiri": {
+        name: "Eel Nigiri",
+        description: "Anghilă pe orez sushimeshi",
         tag: "Train",
       },
       "salmon-nigiri": {
-        name: "Salmon Nigiri",
+        name: "Somon Nigiri",
         description: "Somon proaspăt pe orez sushimeshi",
         tag: "Train",
       },
       "tuna-nigiri": {
-        name: "Tuna Nigiri",
-        description: "Ton, tăiat fin pe orez",
+        name: "Ton Nigiri",
+        description: "Ton pe orez sushimeshi",
         tag: "Train",
       },
       "shrimp-nigiri": {
-        name: "Shrimp Nigiri",
-        description: "Creveți fierți pe orez sushimeshi",
+        name: "Creveți Nigiri",
+        description: "Creveți pe orez sushimeshi",
         tag: "Train",
       },
-      "maki-salmon": {
-        name: "Maki Salmon",
-        description: "Maki cu somon și avocado, nori la exterior",
+      "espada-nigiri": {
+        name: "Ispada Nigiri",
+        description: "Pește-spadă pe orez sushimeshi",
         tag: "Train",
       },
-      "uramaki-salmon": {
-        name: "Uramaki Salmon",
-        description: "Somon, cremă de brânză și castravete, orez la exterior",
+      "salmon-california": {
+        name: "Somon California",
+        description: "California cu somon",
         tag: "Train",
       },
-      "boston-roll": {
-        name: "Boston Roll",
-        description: "Surimi, avocado și icre pe orez",
+      "tuna-california": {
+        name: "Ton California",
+        description: "California cu ton",
         tag: "Train",
       },
-      "maki-tuna": {
-        name: "Maki Tuna",
-        description: "Maki cu ton, nori la exterior",
+      "sushi-tempura": {
+        name: "Sushi tempura",
+        description: "Sushi crocant în tempura",
+        tag: "Train",
+      },
+      "maki-surimi": {
+        name: "Maki surimi",
+        description: "Maki cu surimi, nori la exterior",
+        tag: "Train",
+      },
+      "masago-cover": {
+        name: "Masago cover",
+        description: "Roll acoperit cu masago",
+        tag: "Train",
+      },
+      "hosso-hot-roll": {
+        name: "Hosso hot roll",
+        description: "Hot roll pe bandă",
         tag: "Train",
       },
       "combo-pui": {
@@ -223,22 +294,52 @@ const ro: Dict = {
       },
       "suc-pere": {
         name: "Suc din pere",
-        description: "500 ml · 冰糖雪梨",
+        description: "ksf · 500 ml",
         tag: "Asiatice",
       },
       "suc-prune": {
         name: "Suc din prune",
-        description: "500 ml · 酸梅汤",
+        description: "ksf · 500 ml",
         tag: "Asiatice",
       },
       "ceai-negru": {
         name: "Ceai negru",
-        description: "500 ml · 冰红茶",
+        description: "ksf · 500 ml",
         tag: "Asiatice",
       },
       "ceai-iasomie": {
         name: "Ceai de iasomie",
-        description: "500 ml · 茉莉花茶",
+        description: "ksf · 500 ml",
+        tag: "Asiatice",
+      },
+      "suc-pomelo": {
+        name: "Suc de pomelo",
+        description: "Băutură asiatică",
+        tag: "Asiatice",
+      },
+      "okf-aloe": {
+        name: "OKF Korea Aloe Vera / Strawberry / Lemon",
+        description: "350 ml",
+        tag: "Asiatice",
+      },
+      "okf-grape": {
+        name: "OKF Korea Grape / Watermelon / Melon",
+        description: "350 ml",
+        tag: "Asiatice",
+      },
+      "ceai-plante": {
+        name: "Ceai de plante JDB China",
+        description: "310 ml",
+        tag: "Asiatice",
+      },
+      "lapte-cocos": {
+        name: "Lapte de cocos China Hainan",
+        description: "245 ml",
+        tag: "Asiatice",
+      },
+      "mogu-mogu": {
+        name: "Korea Mogu Mogu",
+        description: "320 ml",
         tag: "Asiatice",
       },
       apa: {
@@ -253,21 +354,6 @@ const ro: Dict = {
       },
       fuzetea: { name: "FuzeTea", description: "500 ml", tag: "Răcoritoare" },
       cappy: { name: "Cappy", description: "330 ml", tag: "Răcoritoare" },
-      "ceai-plante": {
-        name: "Ceai de plante JDB China",
-        description: "310 ml",
-        tag: "Răcoritoare",
-      },
-      "lapte-cocos": {
-        name: "Lapte de cocos China Hainan",
-        description: "245 ml",
-        tag: "Răcoritoare",
-      },
-      asahi: {
-        name: "Asahi",
-        description: "Bere japoneză 5.2% · 330 ml",
-        tag: "Bere",
-      },
       "heineken-draft": {
         name: "Heineken Draft",
         description: "5.0% · 400 ml",
@@ -290,23 +376,27 @@ const ro: Dict = {
       },
       ciuc: {
         name: "Ciuc / Radler",
-        description: "5.0% · 330 ml",
+        description: "5.9% · 330 ml",
         tag: "Bere",
       },
       strongbow: {
         name: "Strongbow",
         description: "4.5% · 330 ml",
-        tag: "Cidru",
+        tag: "Bere",
       },
-      "vin-recas": {
-        name: "Vin Recaș",
+      "vin-rosu": {
+        name: "Vin roșu",
         description: "12% · 187 ml",
         tag: "Vin",
       },
-      jb: { name: "J&B", description: "40% · 50 ml", tag: "Spirtoase" },
+      asahi: {
+        name: "Asahi",
+        description: "Bere japoneză 5.2% · 330 ml",
+        tag: "Bere",
+      },
       sake: {
         name: "Sake japonez (Chamisul)",
-        description: "17.2% · 350 ml",
+        description: "17.2% · 330 ml",
         tag: "Sake",
       },
     },
@@ -335,6 +425,26 @@ const ro: Dict = {
     bara: "Bar",
     logo: "Logo",
     planta: "Colt verde",
+  },
+  sushi: {
+    eyebrow: "Sushi",
+    title: "Sushi",
+    homeTitle: "Pe farfurie",
+    homeAccent: "Sushi",
+    homeBody:
+      "Close-up-uri de pe bandă și din farfurie — alege o poză, mișcă cursorul, deschide fullscreen.",
+    pick: "Alege o farfurie",
+    open: "Deschide",
+    prev: "Anterior",
+    next: "Următor",
+    nigiri: "Nigiri",
+    uramaki: "Uramaki",
+    platter: "Platou",
+    salmon: "Somon",
+    roe: "Ikura",
+    maki: "Maki",
+    assortment: "Asortiment",
+    detail: "Detaliu",
   },
   cta: {
     eyebrow: "Masa ta te așteaptă",
@@ -495,7 +605,7 @@ const en: Dict = {
     tabCombo: "Combo",
     tabDrinks: "Drinks",
     note: "All you can eat = sushi only (100 min). Combos and drinks are charged separately.",
-    inBuffet: "in buffet",
+    inBuffet: "on the belt",
     stackEyebrow: "Menu · Card Stack",
     stackTitle: "Categories on the belt",
     stackHintTouch: "Swipe cards for the next category.",
@@ -529,9 +639,64 @@ const en: Dict = {
     },
     items: {
       ...ro.menu.items,
-      "california-roll": {
-        name: "California Roll",
-        description: "Uramaki with surimi, avocado and roe",
+      california: {
+        name: "California",
+        description: "Classic uramaki on the belt",
+        tag: "Train",
+      },
+      filadelfia: {
+        name: "Philadelphia",
+        description: "Salmon, cream cheese and cucumber",
+        tag: "Train",
+      },
+      "maki-salmon": {
+        name: "Salmon maki",
+        description: "Salmon maki, nori outside",
+        tag: "Train",
+      },
+      "maki-tuna": {
+        name: "Tuna maki",
+        description: "Tuna maki, nori outside",
+        tag: "Train",
+      },
+      "maki-shrimp": {
+        name: "Shrimp maki",
+        description: "Shrimp maki, nori outside",
+        tag: "Train",
+      },
+      "maki-avocado": {
+        name: "Avocado maki",
+        description: "Avocado maki, nori outside",
+        tag: "Train",
+      },
+      "maki-cucumber": {
+        name: "Cucumber maki",
+        description: "Cucumber maki, nori outside",
+        tag: "Train",
+      },
+      vegetarian: {
+        name: "Vegetarian",
+        description: "Vegetarian rolls on the belt",
+        tag: "Train",
+      },
+      "salmon-cover": {
+        name: "Salmon cover",
+        description: "Roll topped with salmon",
+        tag: "Train",
+      },
+      "mango-cover": {
+        name: "Mango cover",
+        description: "Roll topped with mango",
+        tag: "Train",
+      },
+      "tobiko-cover": {
+        name: "Tobiko cover",
+        description: "Roll topped with tobiko",
+        tag: "Train",
+      },
+      "eel-nigiri": {
+        name: "Eel Nigiri",
+        description: "Eel on sushi rice",
         tag: "Train",
       },
       "salmon-nigiri": {
@@ -541,32 +706,47 @@ const en: Dict = {
       },
       "tuna-nigiri": {
         name: "Tuna Nigiri",
-        description: "Finely sliced tuna on rice",
+        description: "Tuna on sushi rice",
         tag: "Train",
       },
       "shrimp-nigiri": {
         name: "Shrimp Nigiri",
-        description: "Cooked shrimp on sushi rice",
+        description: "Shrimp on sushi rice",
         tag: "Train",
       },
-      "maki-salmon": {
-        name: "Maki Salmon",
-        description: "Salmon and avocado maki, nori outside",
+      "espada-nigiri": {
+        name: "Espada Nigiri",
+        description: "Swordfish on sushi rice",
         tag: "Train",
       },
-      "uramaki-salmon": {
-        name: "Uramaki Salmon",
-        description: "Salmon, cream cheese and cucumber, rice outside",
+      "salmon-california": {
+        name: "Salmon California",
+        description: "California with salmon",
         tag: "Train",
       },
-      "boston-roll": {
-        name: "Boston Roll",
-        description: "Surimi, avocado and roe on rice",
+      "tuna-california": {
+        name: "Tuna California",
+        description: "California with tuna",
         tag: "Train",
       },
-      "maki-tuna": {
-        name: "Maki Tuna",
-        description: "Tuna maki, nori outside",
+      "sushi-tempura": {
+        name: "Tempura sushi",
+        description: "Crispy tempura sushi",
+        tag: "Train",
+      },
+      "maki-surimi": {
+        name: "Surimi maki",
+        description: "Surimi maki, nori outside",
+        tag: "Train",
+      },
+      "masago-cover": {
+        name: "Masago cover",
+        description: "Roll topped with masago",
+        tag: "Train",
+      },
+      "hosso-hot-roll": {
+        name: "Hosso hot roll",
+        description: "Hot roll on the belt",
         tag: "Train",
       },
       "combo-pui": {
@@ -591,22 +771,52 @@ const en: Dict = {
       },
       "suc-pere": {
         name: "Pear juice",
-        description: "500 ml · 冰糖雪梨",
+        description: "ksf · 500 ml",
         tag: "Asian",
       },
       "suc-prune": {
         name: "Plum juice",
-        description: "500 ml · 酸梅汤",
+        description: "ksf · 500 ml",
         tag: "Asian",
       },
       "ceai-negru": {
         name: "Black tea",
-        description: "500 ml · 冰红茶",
+        description: "ksf · 500 ml",
         tag: "Asian",
       },
       "ceai-iasomie": {
         name: "Jasmine tea",
-        description: "500 ml · 茉莉花茶",
+        description: "ksf · 500 ml",
+        tag: "Asian",
+      },
+      "suc-pomelo": {
+        name: "Pomelo juice",
+        description: "Asian drink",
+        tag: "Asian",
+      },
+      "okf-aloe": {
+        name: "OKF Korea Aloe Vera / Strawberry / Lemon",
+        description: "350 ml",
+        tag: "Asian",
+      },
+      "okf-grape": {
+        name: "OKF Korea Grape / Watermelon / Melon",
+        description: "350 ml",
+        tag: "Asian",
+      },
+      "ceai-plante": {
+        name: "Herbal tea JDB China",
+        description: "310 ml",
+        tag: "Asian",
+      },
+      "lapte-cocos": {
+        name: "Coconut milk China Hainan",
+        description: "245 ml",
+        tag: "Asian",
+      },
+      "mogu-mogu": {
+        name: "Korea Mogu Mogu",
+        description: "320 ml",
         tag: "Asian",
       },
       apa: {
@@ -619,29 +829,29 @@ const en: Dict = {
         description: "500 ml",
         tag: "Soft drinks",
       },
-      "ceai-plante": {
-        name: "Herbal tea JDB China",
-        description: "310 ml",
-        tag: "Soft drinks",
+      "heineken-draft": {
+        name: "Heineken Draft",
+        description: "5.0% · 400 ml",
+        tag: "Draft",
       },
-      "lapte-cocos": {
-        name: "Coconut milk China Hainan",
-        description: "245 ml",
-        tag: "Soft drinks",
+      ciuc: {
+        name: "Ciuc / Radler",
+        description: "5.9% · 330 ml",
+        tag: "Beer",
+      },
+      "vin-rosu": {
+        name: "Red wine",
+        description: "12% · 187 ml",
+        tag: "Wine",
       },
       asahi: {
         name: "Asahi",
         description: "Japanese beer 5.2% · 330 ml",
         tag: "Beer",
       },
-      "heineken-draft": {
-        name: "Heineken Draft",
-        description: "5.0% · 400 ml",
-        tag: "Draft",
-      },
       sake: {
         name: "Japanese sake (Chamisul)",
-        description: "17.2% · 350 ml",
+        description: "17.2% · 330 ml",
         tag: "Sake",
       },
     },
@@ -670,6 +880,26 @@ const en: Dict = {
     bara: "Bar",
     logo: "Logo",
     planta: "Green corner",
+  },
+  sushi: {
+    eyebrow: "Sushi",
+    title: "Sushi",
+    homeTitle: "On the plate",
+    homeAccent: "Sushi",
+    homeBody:
+      "Close-ups from the belt and the plate — pick a shot, move the cursor, open fullscreen.",
+    pick: "Pick a plate",
+    open: "Open",
+    prev: "Previous",
+    next: "Next",
+    nigiri: "Nigiri",
+    uramaki: "Uramaki",
+    platter: "Platter",
+    salmon: "Salmon",
+    roe: "Ikura",
+    maki: "Maki",
+    assortment: "Assortment",
+    detail: "Detail",
   },
   cta: {
     eyebrow: "Your table is waiting",
@@ -828,7 +1058,7 @@ const ru: Dict = {
     tabCombo: "Комбо",
     tabDrinks: "Напитки",
     note: "Безлимит = только суши (100 мин). Комбо и напитки отдельно.",
-    inBuffet: "в буфете",
+    inBuffet: "на ленте",
     stackEyebrow: "Меню · Карточки",
     stackTitle: "Категории",
     stackHintTouch: "Свайпните к следующей категории.",
@@ -926,6 +1156,26 @@ const ru: Dict = {
     bara: "Бар",
     logo: "Логотип",
     planta: "Зелёный угол",
+  },
+  sushi: {
+    eyebrow: "Суши",
+    title: "Суши",
+    homeTitle: "На тарелке",
+    homeAccent: "Суши",
+    homeBody:
+      "Крупные планы с ленты и тарелки — выбери кадр, двигай курсор, открой на весь экран.",
+    pick: "Выбери тарелку",
+    open: "Открыть",
+    prev: "Назад",
+    next: "Далее",
+    nigiri: "Нигири",
+    uramaki: "Урамаки",
+    platter: "Плато",
+    salmon: "Лосось",
+    roe: "Икура",
+    maki: "Маки",
+    assortment: "Ассорти",
+    detail: "Деталь",
   },
   cta: {
     eyebrow: "Стол ждёт вас",
@@ -1081,7 +1331,7 @@ const zh: Dict = {
     tabCombo: "套餐",
     tabDrinks: "饮品",
     note: "自助仅含寿司（100分钟）。套餐与饮品另计。",
-    inBuffet: "自助内",
+    inBuffet: "传送带上",
     stackEyebrow: "菜单 · 卡片",
     stackTitle: "分类",
     stackHintTouch: "滑动卡片查看下一类。",
@@ -1183,6 +1433,25 @@ const zh: Dict = {
     bara: "吧台",
     logo: "标志",
     planta: "绿意一角",
+  },
+  sushi: {
+    eyebrow: "寿司",
+    title: "寿司",
+    homeTitle: "盘中",
+    homeAccent: "寿司",
+    homeBody: "传送带与餐盘特写 — 选一张、移动光标、全屏查看。",
+    pick: "选择一盘",
+    open: "打开",
+    prev: "上一张",
+    next: "下一张",
+    nigiri: "握寿司",
+    uramaki: "里卷",
+    platter: "拼盘",
+    salmon: "三文鱼",
+    roe: "鱼籽",
+    maki: "卷寿司",
+    assortment: "拼盘",
+    detail: "细节",
   },
   cta: {
     eyebrow: "座位已备好",

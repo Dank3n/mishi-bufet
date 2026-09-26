@@ -91,7 +91,16 @@ export function PlateVisual({
 
 export function plateKindFromName(name: string): PlateKind {
   const n = name.toLowerCase();
-  if (n.includes("maki") || n.includes("roll") || n.includes("california") || n.includes("dragon"))
+  if (
+    n.includes("maki") ||
+    n.includes("roll") ||
+    n.includes("california") ||
+    n.includes("filadelfia") ||
+    n.includes("philadelphia") ||
+    n.includes("cover") ||
+    n.includes("tempura") ||
+    n.includes("vegetarien")
+  )
     return "maki";
   if (n.includes("sashimi")) return "sashimi";
   if (

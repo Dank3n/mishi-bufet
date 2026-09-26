@@ -8,9 +8,27 @@ import {
 } from "@/components/food/PlateVisual";
 import { useLocale } from "@/i18n/LocaleProvider";
 
-function formatPrice(price: string | undefined, inBuffet: string, lei: string) {
-  if (!price || price === "în bufet") return inBuffet;
-  if (price.includes("%") || price === "Gratis" || price === "Free" || price === "無料" || price === "免费") {
+function formatPrice(price: string | undefined, onBelt: string, lei: string) {
+  if (!price) return onBelt;
+  const p = price.normalize("NFC").toLowerCase();
+  if (
+    p === "belt" ||
+    p === "pe bandă" ||
+    p === "în bufet" ||
+    p.includes("band") ||
+    p.includes("belt") ||
+    p.includes("bufet") ||
+    p.includes("buffet")
+  ) {
+    return onBelt;
+  }
+  if (
+    price.includes("%") ||
+    price === "Gratis" ||
+    price === "Free" ||
+    price === "無料" ||
+    price === "免费"
+  ) {
     return price;
   }
   return `${price} ${lei}`;
@@ -71,7 +89,9 @@ export function MenuEditorial({ showNote = true }: { showNote?: boolean }) {
                         )}
                       </div>
                       <span className="menu-price font-display text-base sm:text-lg md:text-xl text-ink-muted tabular-nums self-start pt-0.5 transition-all duration-300 group-hover:text-white group-active:text-white">
-                        {formatPrice(item.price, t.menu.inBuffet, t.common.lei)}
+                        {cat.id === "sushi"
+                          ? t.menu.inBuffet
+                          : formatPrice(item.price, t.menu.inBuffet, t.common.lei)}
                       </span>
                       <p className="col-span-2 max-w-xl text-xs sm:text-sm text-ink-muted font-light leading-relaxed group-hover:text-white/75 transition-colors pr-12 sm:pr-16 md:pr-28">
                         {description}

@@ -52,7 +52,7 @@ function PlateCard({
           className="relative z-[1] object-contain object-bottom select-none pointer-events-none"
           unoptimized
           priority={
-            plate.id === "california-roll" || plate.id === "salmon-nigiri"
+            plate.id === "california" || plate.id === "salmon-nigiri"
           }
           draggable={false}
         />

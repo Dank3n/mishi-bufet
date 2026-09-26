@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, useReducedMotion, type HTMLMotionProps } from "framer-motion";
-import { type ReactNode } from "react";
+import { useEffect, useState, type ReactNode } from "react";
 
 type RevealProps = {
   children: ReactNode;
@@ -26,11 +26,16 @@ export function Reveal({
   ...rest
 }: RevealProps) {
   const reduce = useReducedMotion();
-  const offset = offsets[direction];
+  // Defer motion until after mount so useReducedMotion can't hydrate-mismatch
+  // (that mismatch opens the Next.js overlay and locks body scroll).
+  const [live, setLive] = useState(false);
+  useEffect(() => setLive(true), []);
 
-  if (reduce) {
+  if (!live || reduce) {
     return <div className={className}>{children}</div>;
   }
+
+  const offset = offsets[direction];
 
   return (
     <motion.div

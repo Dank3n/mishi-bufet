@@ -2,11 +2,15 @@
 
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
+import { motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { TransitionLink } from "@/components/fx/TransitionLink";
 import { LanguageSwitcher } from "@/components/layout/LanguageSwitcher";
 import { useLocale } from "@/i18n/LocaleProvider";
+import {
+  resetBodyScrollLock,
+  useBodyScrollLock,
+} from "@/hooks/useBodyScrollLock";
 import { location } from "@/data/pricing";
 
 const links = [
@@ -31,25 +35,19 @@ export function Navbar() {
 
   useEffect(() => {
     setOpen(false);
+    resetBodyScrollLock();
   }, [pathname]);
 
-  useEffect(() => {
-    if (!open) return;
-    const prev = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
-    return () => {
-      document.body.style.overflow = prev;
-    };
-  }, [open]);
+  useBodyScrollLock(open);
 
   return (
     <header
-      className={`fixed top-0 inset-x-0 z-50 transition-all duration-500 pt-[env(safe-area-inset-top)] ${
+      className={`fixed top-0 inset-x-0 z-50 pt-[env(safe-area-inset-top)] ${
         open
           ? "bg-bg-deep border-b border-line"
           : scrolled
-            ? "bg-bg-deep/95 backdrop-blur-md border-b border-line"
-            : "bg-transparent"
+            ? "bg-bg-deep border-b border-line transition-[background-color,border-color] duration-300"
+            : "bg-transparent transition-[background-color,border-color] duration-300"
       }`}
     >
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-3 px-4 sm:px-5 md:px-8 py-3 sm:py-4">
@@ -108,58 +106,37 @@ export function Navbar() {
         </div>
       </div>
 
-      <AnimatePresence>
-        {open && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.25 }}
-            className="lg:hidden fixed inset-0 z-[55] bg-[#0a0a0a] pt-[calc(env(safe-area-inset-top)+4.5rem)] pb-[env(safe-area-inset-bottom)]"
-          >
-            {/* Extra opaque layer so page content never bleeds through */}
-            <div className="pointer-events-none absolute inset-0 bg-[#0a0a0a]" aria-hidden />
-            <nav className="relative z-[1] flex h-full flex-col px-6 bg-[#0a0a0a]">
-              <div className="flex flex-1 flex-col justify-center gap-1">
-                {links.map((link, i) => (
-                  <motion.div
-                    key={link.href}
-                    initial={{ opacity: 0, x: -16 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 0.04 * i, duration: 0.35 }}
-                  >
-                    <TransitionLink
-                      href={link.href}
-                      className={`block py-4 text-2xl font-display tracking-wide border-b border-line ${
-                        pathname === link.href ? "text-mishi-red" : "text-ink"
-                      }`}
-                    >
-                      {t.nav[link.key]}
-                    </TransitionLink>
-                  </motion.div>
-                ))}
-              </div>
-
-              <motion.div
-                initial={{ opacity: 0, y: 12 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.25 }}
-                className="pb-8 pt-4"
-              >
-                <a
-                  href={location.phoneHref}
-                  className="flex min-h-14 w-full items-center justify-center bg-mishi-red text-white text-sm tracking-[0.2em] uppercase red-glow"
+      {open && (
+        <div className="lg:hidden fixed inset-0 z-[55] bg-bg-deep pt-[calc(env(safe-area-inset-top)+4.5rem)] pb-[env(safe-area-inset-bottom)]">
+          <nav className="relative z-[1] flex h-full flex-col bg-bg-deep px-6">
+            <div className="flex flex-1 flex-col justify-center gap-1">
+              {links.map((link) => (
+                <TransitionLink
+                  key={link.href}
+                  href={link.href}
+                  className={`block py-4 text-2xl font-display tracking-wide border-b border-line ${
+                    pathname === link.href ? "text-mishi-red" : "text-ink"
+                  }`}
                 >
-                  {t.contact.call}
-                </a>
-                <p className="mt-4 text-center text-[10px] tracking-[0.3em] uppercase text-ink-muted">
-                  {location.phone}
-                </p>
-              </motion.div>
-            </nav>
-          </motion.div>
-        )}
-      </AnimatePresence>
+                  {t.nav[link.key]}
+                </TransitionLink>
+              ))}
+            </div>
+
+            <div className="pb-8 pt-4">
+              <a
+                href={location.phoneHref}
+                className="flex min-h-14 w-full items-center justify-center bg-mishi-red text-white text-sm tracking-[0.2em] uppercase red-glow"
+              >
+                {t.contact.call}
+              </a>
+              <p className="mt-4 text-center text-[10px] tracking-[0.3em] uppercase text-ink-muted">
+                {location.phone}
+              </p>
+            </div>
+          </nav>
+        </div>
+      )}
     </header>
   );
 }
